@@ -511,7 +511,7 @@
         <div style="background:#FFFFFF;border:1px solid rgba(14,36,48,0.16);display:flex;flex-direction:column;">
           <div style="width:100%;aspect-ratio:3/4;background:#FFFFFF;border-bottom:1px solid rgba(14,36,48,0.12);display:flex;align-items:center;justify-content:center;padding:6px;">
             <sc-if value="{{ u.hasPlan }}" hint-placeholder-val="{{ false }}">
-              <a href="{{ u.img }}" target="_blank" rel="noopener" title="{{ t.unitsZoom }}" role="img" aria-label="{{ u.name }}" style="display:block;width:100%;height:100%;background-image:url({{ u.img }});background-size:contain;background-repeat:no-repeat;background-position:center;cursor:zoom-in;"></a>
+              <a href="{{ u.img }}" target="_blank" rel="noopener" title="{{ t.unitsZoom }}" aria-label="{{ u.name }}" style="display:block;width:100%;height:100%;cursor:zoom-in;"><img src="{{ u.img }}" alt="{{ u.name }}" style="width:100%;height:100%;object-fit:contain;display:block;" /></a>
             </sc-if>
             <sc-if value="{{ u.noPlan }}" hint-placeholder-val="{{ false }}">
               <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.14em;font-size:13px;text-align:center;opacity:0.75;">{{ t.unitsSoon }}</div>
