@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="./image-slot.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'Heebo', sans-serif; }
+    * { box-sizing: border-box; }
+    body, body h1, body h2, body h3, body h4, body p, body div, body span, body a, body li, body figure, body figcaption, body label, body input, body textarea, body button, body select { font-family: 'Heebo', sans-serif; }
+    @keyframes mrFadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes mrType { from { width: 0; } to { width: 100%; } }
+    @keyframes mrCaret { 0%,100% { border-color: transparent; } 50% { border-color: #E8EDF0; } }
+    @keyframes mrFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes mrSway { 0%,100% { transform: rotate(-9deg); } 50% { transform: rotate(9deg); } }
+    @keyframes mrPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.14); } }
+    @keyframes mrSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes mrTilt { 0%,100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+    @keyframes mrBob { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-6px) rotate(-4deg); } }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: #0E2430; }
+  </style>
+</helmet>
+
+<div dir="{{ dir }}" style="font-family:'Heebo',sans-serif;background:#FBF8F3;color:#0E2430;overflow-x:hidden;width:100%;padding-bottom:{{ stickyPad }};">
+
+  <!-- NAV -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 5%;transition:background 0.35s ease,box-shadow 0.35s ease,border-color 0.35s ease;background:{{ navBg }};backdrop-filter:{{ navBlur }};border-bottom:1px solid {{ navBorder }};box-shadow:{{ navShadow }};">
+    <img src="images/logo-horizontal-white.png" alt="Miami Residence" style="height:15px;width:auto;object-fit:contain;display:block;flex-shrink:0;justify-self:start;filter:drop-shadow(0 2px 10px rgba(0,0,0,0.4));" />
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <div></div>
+    </sc-if>
+    <sc-if value="{{ isDesktopNav }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;gap:42px;align-items:center;justify-self:center;">
+        <a href="about.html" style="color:#FFFFFF;font-size:15px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid transparent;" style-hover="border-bottom:1px solid #E8EDF0;">{{ t.navAbout }}</a>
+        <a href="contact.html" style="color:#FFFFFF;font-size:15px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid transparent;" style-hover="border-bottom:1px solid #E8EDF0;">{{ t.navContact }}</a>
+        <a href="media.html" style="color:#FFFFFF;font-size:15px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid transparent;" style-hover="border-bottom:1px solid #E8EDF0;">{{ t.navMedia }}</a>
+        <a href="faq.html" style="color:#FFFFFF;font-size:15px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding-bottom:4px;border-bottom:1px solid transparent;" style-hover="border-bottom:1px solid #E8EDF0;">{{ t.navFaq }}</a>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isDesktopNav }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:18px;justify-self:end;">
+        <button onclick="{{ toggleLang }}" style="background:rgba(255,255,255,0.12);border:1.5px solid #FFFFFF;color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.1em;padding:9px 18px;border-radius:20px;cursor:pointer;">{{ t.langToggle }}</button>
+        <a href="tel:0523699316" title="{{ t.heroCta1 }}" style="display:inline-flex;align-items:center;gap:9px;background:#0E2430;color:#FFFFFF;font-size:14px;font-weight:700;letter-spacing:0.03em;padding:13px 26px;border-radius:24px;white-space:nowrap;box-shadow:0 8px 22px rgba(14,36,48,0.55);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1z"/></svg>
+          <span>{{ t.ctaCallShort }}</span>
+        </a>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onclick="{{ toggleMobileMenu }}" style="justify-self:end;background:transparent;border:none;color:#FFFFFF;padding:8px;cursor:pointer;display:flex;flex-direction:column;gap:5px;">
+        <span style="width:24px;height:2px;background:#FFFFFF;display:block;"></span>
+        <span style="width:24px;height:2px;background:#FFFFFF;display:block;"></span>
+        <span style="width:24px;height:2px;background:#FFFFFF;display:block;"></span>
+      </button>
+    </sc-if>
+  </div>
+  <sc-if value="{{ mobileMenuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:300;background:linear-gradient(180deg,#0E2430 0%,#06161E 100%);display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 6%;border-bottom:1px solid rgba(255,255,255,0.1);">
+        <img src="images/logo-horizontal-white.png" alt="Miami Residence" style="height:15px;width:auto;object-fit:contain;display:block;" />
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button onclick="{{ toggleLang }}" style="background:transparent;border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.1em;padding:8px 14px;border-radius:20px;cursor:pointer;">{{ t.langToggle }}</button>
+          <button onclick="{{ toggleMobileMenu }}" style="width:38px;height:38px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">×</button>
+        </div>
+      </div>
+      <nav style="display:flex;flex-direction:column;padding:14px 6% 0;">
+        <a href="index.html" onclick="{{ toggleMobileMenu }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 2px;border-bottom:1px solid rgba(255,255,255,0.09);color:#FFFFFF;font-size:23px;font-weight:500;letter-spacing:0.01em;" style-hover="color:#E8EDF0;"><span>{{ t.navHome }}</span><span style="font-size:11px;letter-spacing:0.18em;color:rgba(232,237,240,0.45);">01</span></a>
+        <a href="about.html" onclick="{{ toggleMobileMenu }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 2px;border-bottom:1px solid rgba(255,255,255,0.09);color:#FFFFFF;font-size:23px;font-weight:500;letter-spacing:0.01em;" style-hover="color:#E8EDF0;"><span>{{ t.navAbout }}</span><span style="font-size:11px;letter-spacing:0.18em;color:rgba(232,237,240,0.45);">02</span></a>
+        <a href="media.html" onclick="{{ toggleMobileMenu }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 2px;border-bottom:1px solid rgba(255,255,255,0.09);color:#FFFFFF;font-size:23px;font-weight:500;letter-spacing:0.01em;" style-hover="color:#E8EDF0;"><span>{{ t.navMedia }}</span><span style="font-size:11px;letter-spacing:0.18em;color:rgba(232,237,240,0.45);">03</span></a>
+        <a href="faq.html" onclick="{{ toggleMobileMenu }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 2px;border-bottom:1px solid rgba(255,255,255,0.09);color:#FFFFFF;font-size:23px;font-weight:500;letter-spacing:0.01em;" style-hover="color:#E8EDF0;"><span>{{ t.navFaq }}</span><span style="font-size:11px;letter-spacing:0.18em;color:rgba(232,237,240,0.45);">04</span></a>
+        <a href="contact.html" onclick="{{ toggleMobileMenu }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 2px;border-bottom:1px solid rgba(255,255,255,0.09);color:#FFFFFF;font-size:23px;font-weight:500;letter-spacing:0.01em;" style-hover="color:#E8EDF0;"><span>{{ t.navContact }}</span><span style="font-size:11px;letter-spacing:0.18em;color:rgba(232,237,240,0.45);">05</span></a>
+      </nav>
+      <div style="margin-top:auto;display:flex;flex-direction:column;gap:14px;padding:26px 6% calc(26px + env(safe-area-inset-bottom));">
+        <a href="https://wa.me/972523699316" style="background:#0E2430;color:#FFFFFF;display:flex;align-items:center;justify-content:center;gap:10px;font-size:16px;font-weight:700;letter-spacing:0.02em;padding:16px;border-radius:32px;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.2-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg><span>{{ t.barWhatsapp }}</span></a>
+        <a href="tel:0523699316" style="text-align:center;color:rgba(255,255,255,0.6);font-size:13.5px;letter-spacing:0.1em;">052-369-9316</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- HERO -->
+  <div style="position:relative;isolation:isolate;min-height:{{ heroH }};display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:{{ heroPadTop }} 6% {{ heroPadBottom }};">
+    <img src="images/masterplan-sunset.jpg" alt="הדמיה אווירית של מתחם Sea Breeze והאי המלאכותי" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0.45) 0%,rgba(15,15,15,0.1) 34%,rgba(12,10,10,0.24) 58%,rgba(10,10,10,0.8) 100%);z-index:-1;"></div>
+
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:22px;animation:mrFade 1s ease both;">
+      <div style="width:6px;height:6px;transform:rotate(45deg);background:#FFFFFF;flex-shrink:0;"></div>
+      <div style="width:46px;height:1px;background:rgba(255,255,255,0.6);"></div>
+      <div style="font-family:'Heebo',sans-serif;color:#FFFFFF;letter-spacing:0.3em;font-size:clamp(12px,3.4vw,13px);white-space:nowrap;">{{ t.heroEyebrow }}</div>
+      <div style="width:46px;height:1px;background:rgba(255,255,255,0.6);"></div>
+      <div style="width:6px;height:6px;transform:rotate(45deg);background:#FFFFFF;flex-shrink:0;"></div>
+    </div>
+
+    <h1 style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(40px,6.4vw,84px);line-height:1.12;margin:0 0 14px;max-width:920px;color:#FFFFFF;text-shadow:0 2px 20px rgba(0,0,0,0.4);animation:mrFadeUp 1s ease 0.2s both;"><span dir="ltr" style="display:block;">{{ t.heroTitleEn }}</span><span style="display:block;">{{ t.heroTitleHe }}</span></h1>
+
+    <div style="display:flex;justify-content:center;margin-bottom:12px;animation:mrFadeUp 1s ease 0.35s both;">
+      <div style="font-family:'Heebo',sans-serif;font-weight:500;font-size:clamp(17px,2.4vw,28px);color:#FFFFFF;text-shadow:0 2px 16px rgba(0,0,0,0.55);">{{ t.heroScript }}</div>
+    </div>
+
+    <div style="width:100%;max-width:420px;height:1px;background:linear-gradient(90deg,transparent,rgba(232,237,240,0.7),transparent);margin-bottom:14px;animation:mrFade 1.2s ease 0.5s both;"></div>
+
+    <p style="font-size:17px;color:#EDF3F2;max-width:560px;line-height:1.7;margin:0 0 36px;animation:mrFadeUp 1s ease 0.55s both;">{{ t.heroSub }}</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;animation:mrFadeUp 1s ease 0.7s both;">
+      <a href="tel:0523699316" style="display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#0E2430;color:#FFFFFF;padding:16px 30px;font-size:15.5px;letter-spacing:0.02em;border-radius:30px;font-weight:700;min-height:52px;box-shadow:0 10px 30px rgba(0,0,0,0.35);">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1z"/></svg>
+        <span>{{ t.heroCta1 }}</span>
+      </a>
+      <a href="#contact" style="display:inline-flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.95);color:#0E2430;padding:16px 30px;font-size:15.5px;font-weight:700;border-radius:30px;min-height:52px;">{{ t.heroCta2 }}</a>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" style="position:relative;background:#FFFFFF;padding:clamp(64px,12vw,110px) 5% clamp(34px,5vw,48px);overflow:hidden;">
+    <div style="position:relative;z-index:1;max-width:1000px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;">
+      <div style="width:100%;max-width:900px;">
+        <div data-reveal="1" style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px;">
+          <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+          <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+          <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.3em;font-size:12.5px;">{{ t.aboutEyebrow }}</div>
+          <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+          <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+        </div>
+        <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.16;margin:0 0 22px;color:#0E2430;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:12px;">
+          <span>{{ t.aboutTitlePre }}</span>
+          <span dir="ltr" style="font-weight:400;">{{ t.aboutTitleScript }}</span>
+        </h2>
+        <div style="width:56px;height:1px;background:rgba(14,36,48,0.45);margin:0 auto 28px;"></div>
+        <p style="font-size:clamp(16.5px,1.7vw,21px);line-height:1.8;color:#0E2430;margin:0 0 18px;text-wrap:pretty;">{{ t.aboutBody1 }}</p>
+        <p style="font-size:clamp(15.5px,1.6vw,18px);line-height:1.8;color:#5B6B70;margin:0;text-wrap:pretty;">{{ t.aboutBody2 }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEGMENTS STRIP -->
+  <div style="width:100%;overflow:hidden;background:#0D0D0D;">
+  <div style="display:flex;flex-wrap:wrap;width:{{ stripW }};margin-inline-start:{{ stripML }};overflow:hidden;background:#0D0D0D;">
+    <div style="position:relative;flex:1 1 {{ stripBasis }};min-width:0;height:{{ stripH }};margin-inline-start:{{ stripShift }};clip-path:{{ stripClip }};transition:flex-grow 0.6s cubic-bezier(.16,.84,.44,1);cursor:pointer;" style-hover="flex-grow:1.45;">
+      <img src="images/masterplan-sunset.jpg" alt="{{ t.stripLabel1 }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,36,48,0.34),rgba(14,36,48,0.5));"></div><div style="position:absolute;inset:0;opacity:{{ stripTint }};background:linear-gradient(180deg,rgba(14,36,48,0.3),rgba(10,36,48,0.34));mix-blend-mode:multiply;"></div><div style="position:absolute;inset:0;opacity:{{ stripTint }};background:rgba(232,237,240,0.14);mix-blend-mode:soft-light;"></div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 10%;">
+        <div style="background:rgba(14,36,48,0.9);backdrop-filter:blur(4px);color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:{{ stripLabelFont }};font-weight:700;letter-spacing:0.03em;padding:{{ stripLabelPad }};text-align:center;white-space:nowrap;box-shadow:0 12px 30px rgba(0,0,0,0.28);">{{ t.stripLabel1 }}</div>
+      </div>
+    </div>
+    <div style="position:relative;flex:1 1 {{ stripBasis }};min-width:0;height:{{ stripH }};margin-inline-start:{{ stripShift }};clip-path:{{ stripClip }};transition:flex-grow 0.6s cubic-bezier(.16,.84,.44,1);cursor:pointer;" style-hover="flex-grow:1.45;">
+      <img src="images/casino-facade-sunset.jpg" alt="{{ t.stripLabel2 }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,36,48,0.34),rgba(14,36,48,0.5));"></div><div style="position:absolute;inset:0;opacity:{{ stripTint }};background:linear-gradient(180deg,rgba(14,36,48,0.3),rgba(10,36,48,0.34));mix-blend-mode:multiply;"></div><div style="position:absolute;inset:0;opacity:{{ stripTint }};background:rgba(232,237,240,0.14);mix-blend-mode:soft-light;"></div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 10%;">
+        <div style="background:rgba(14,36,48,0.9);backdrop-filter:blur(4px);color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:{{ stripLabelFont }};font-weight:700;letter-spacing:0.03em;padding:{{ stripLabelPad }};text-align:center;white-space:nowrap;box-shadow:0 12px 30px rgba(0,0,0,0.28);">{{ t.stripLabel2 }}</div>
+      </div>
+    </div>
+    <div style="position:relative;flex:1 1 {{ stripBasis }};min-width:0;height:{{ stripH }};margin-inline-start:{{ stripShift }};clip-path:{{ stripClip }};transition:flex-grow 0.6s cubic-bezier(.16,.84,.44,1);cursor:pointer;" style-hover="flex-grow:1.45;">
+      <img src="images/baku-landscape.jpg" alt="{{ t.stripLabel3 }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,36,48,0.34),rgba(14,36,48,0.5));"></div><div style="position:absolute;inset:0;opacity:{{ stripTint }};background:linear-gradient(180deg,rgba(14,36,48,0.3),rgba(10,36,48,0.34));mix-blend-mode:multiply;"></div><div style="position:absolute;inset:0;opacity:{{ stripTint }};background:rgba(232,237,240,0.14);mix-blend-mode:soft-light;"></div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 10%;">
+        <div style="background:rgba(14,36,48,0.9);backdrop-filter:blur(4px);color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:{{ stripLabelFont }};font-weight:700;letter-spacing:0.03em;padding:{{ stripLabelPad }};text-align:center;white-space:nowrap;box-shadow:0 12px 30px rgba(0,0,0,0.28);">{{ t.stripLabel3 }}</div>
+      </div>
+    </div>
+    <div style="position:relative;flex:1 1 {{ stripBasis }};min-width:0;height:{{ stripH }};margin-inline-start:{{ stripShift }};clip-path:{{ stripClip }};transition:flex-grow 0.6s cubic-bezier(.16,.84,.44,1);cursor:pointer;" style-hover="flex-grow:1.45;">
+      <img src="images/miami-sunset.jpeg" alt="{{ t.stripLabel4 }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,36,48,0.34),rgba(14,36,48,0.5));"></div><div style="position:absolute;inset:0;opacity:{{ stripTint }};background:linear-gradient(180deg,rgba(14,36,48,0.3),rgba(10,36,48,0.34));mix-blend-mode:multiply;"></div><div style="position:absolute;inset:0;opacity:{{ stripTint }};background:rgba(232,237,240,0.14);mix-blend-mode:soft-light;"></div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 10%;">
+        <div style="background:rgba(14,36,48,0.9);backdrop-filter:blur(4px);color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:{{ stripLabelFont }};font-weight:700;letter-spacing:0.03em;padding:{{ stripLabelPad }};text-align:center;white-space:nowrap;box-shadow:0 12px 30px rgba(0,0,0,0.28);">{{ t.stripLabel4 }}</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- LOCATION -->
+  <div id="location" style="background:#FFFFFF;padding:clamp(56px,10vw,100px) clamp(24px,6%,80px);">
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:{{ locCols }};gap:clamp(28px,4vw,60px);align-items:center;">
+      <div style="display:flex;flex-direction:column;text-align:{{ bodyAlign }};align-items:{{ bakuItems }};">
+        <div data-reveal="1" style="display:flex;align-items:center;justify-content:{{ bakuJustify }};gap:14px;margin-bottom:16px;">
+          <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+          <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+          <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.3em;font-size:12.5px;">{{ t.locEyebrow }}</div>
+          <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+          <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+        </div>
+        <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.16;color:#0E2430;margin:0 0 18px;">{{ t.locTitle }}</h2>
+        <p style="font-size:16px;line-height:1.8;color:#0E2430;margin:0 0 18px;max-width:52ch;text-wrap:pretty;">{{ t.locSub }}</p>
+        <div style="display:flex;flex-direction:column;">
+          <sc-for list="{{ locFacts }}" as="f" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;padding:14px 4px;border-top:1px solid rgba(14,36,48,0.14);">
+              <div style="width:44px;height:44px;border-radius:50%;background:#F6F2EC;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#0E2430" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="{{ f.icon }}"/></svg>
+              </div>
+              <div>
+                <div style="font-family:'Heebo',sans-serif;font-size:clamp(17px,1.6vw,19.5px);font-weight:700;color:#0E2430;line-height:1.25;">{{ f.title }}</div>
+                <div style="font-size:13.5px;color:#5B6B70;margin-top:2px;line-height:1.55;">{{ f.sub }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div data-reveal="1" style="display:flex;flex-direction:column;gap:12px;">
+        <div style="position:relative;width:100%;overflow:hidden;background:#EDE6DC;box-shadow:0 22px 50px rgba(20,20,20,0.16);">
+          <img src="images/seabreeze-masterplan-map.webp" alt="{{ t.mapAlt }}" style="width:100%;height:auto;display:block;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,36,48,0.14) 0%,rgba(14,36,48,0.03) 40%,rgba(14,36,48,0.3) 100%);pointer-events:none;"></div>
+          <sc-for list="{{ mapPins }}" as="p" hint-placeholder-count="3">
+            <div style="position:absolute;left:{{ p.left }};top:{{ p.top }};transform:translate(-50%,-100%);display:flex;flex-direction:column;align-items:center;pointer-events:none;">
+              <div style="background:{{ p.bg }};color:{{ p.color }};font-family:'Heebo',sans-serif;font-size:{{ pinFont }};font-weight:700;padding:{{ pinPad }};border-radius:5px;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,0.4);">{{ p.label }}</div>
+              <div style="width:1px;height:{{ pinStem }};background:{{ p.bg }};"></div>
+              <div style="width:{{ pinDot }};height:{{ pinDot }};border-radius:50%;background:{{ p.bg }};border:2px solid #FFFFFF;box-shadow:0 3px 10px rgba(0,0,0,0.55);"></div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="font-size:12.5px;color:#5B6B70;text-align:{{ bodyAlign }};line-height:1.7;">{{ t.mapNote }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;isolation:isolate;padding:clamp(56px,8vw,104px) clamp(24px,6%,80px);overflow:hidden;">
+    <img src="images/baku-landscape.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(14,36,48,0.94) 0%,rgba(14,36,48,0.8) 48%,rgba(14,36,48,0.42) 100%);z-index:-1;"></div>
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:{{ tourCols }};gap:clamp(24px,4vw,56px);align-items:center;text-align:{{ bodyAlign }};">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,0.12);border:1px solid rgba(232,237,240,0.5);padding:8px 16px;border-radius:20px;margin-bottom:20px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E8EDF0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg>
+          <span style="font-size:12.5px;font-weight:600;letter-spacing:0.06em;color:#FFFFFF;">{{ t.tourBadge }}</span>
+        </div>
+        <div style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.16;color:#FFFFFF;margin-bottom:14px;text-wrap:balance;">{{ t.ctaTourTitle }}</div>
+        <div style="font-size:clamp(16px,1.6vw,18.5px);line-height:1.85;color:rgba(255,255,255,0.86);max-width:50ch;margin-bottom:28px;text-wrap:pretty;">{{ t.ctaTourText }}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;color:#0E2430;padding:17px 34px;font-size:16px;font-weight:700;border-radius:32px;min-height:54px;transition:transform 0.3s ease,box-shadow 0.3s ease;" style-hover="transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,0.35);color:#0E2430;">
+            <span>{{ t.ctaTourBtn }}</span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0E2430" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6-6 6 6 6"/><path d="M20 12H4.5"/></svg>
+          </a>
+          <a href="tel:0523699316" style="display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid rgba(255,255,255,0.6);color:#FFFFFF;padding:17px 30px;font-size:15.5px;font-weight:700;border-radius:32px;min-height:54px;transition:background 0.3s ease;" style-hover="background:rgba(255,255,255,0.14);color:#FFFFFF;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1z"/></svg>
+            <span>{{ t.ctaCallShort }}</span>
+          </a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.18);">
+        <sc-for list="{{ tourPoints }}" as="tpt" hint-placeholder-count="3">
+          <div style="background:rgba(14,36,48,0.72);padding:18px 22px;display:flex;align-items:center;gap:14px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:#E8EDF0;flex-shrink:0;"></span>
+            <span style="font-size:15.5px;font-weight:600;color:#FFFFFF;line-height:1.5;">{{ tpt.text }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMENITIES -->
+  <div id="amenities" style="background:#F6F2EC;padding:clamp(48px,9vw,64px) 5%;">
+    <div data-reveal="1" style="text-align:center;max-width:900px;margin:0 auto 40px;">
+      <div data-reveal="1" style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px;">
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.3em;font-size:12.5px;">{{ t.amenEyebrow }}</div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+      </div>
+      <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,44px);color:#0E2430;margin:0 0 16px;white-space:{{ titleWrap }};">{{ t.amenTitle }}</h2>
+      <p style="color:#5B6B70;font-size:15.5px;line-height:1.7;margin:0;">{{ t.amenSub }}</p>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ amenCols }};gap:clamp(8px,1vw,12px);max-width:1320px;margin:0 auto;padding:0;">
+      <div style="background:#FFFFFF;padding:clamp(18px,2.4vw,26px) clamp(8px,1.1vw,14px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(8px,1.2vw,12px);">
+        <div style="width:clamp(50px,5.4vw,62px);height:clamp(50px,5.4vw,62px);border-radius:50%;background:#0E2430;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(14,36,48,0.3);flex-shrink:0;"><svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation:mrSway 3.2s ease-in-out infinite;transition:transform 0.35s ease;transform-origin:center;" style-hover="transform:scale(1.22);"><path d="M3 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div>
+        <div style="color:#0E2430;font-size:clamp(14.5px,1.4vw,16.5px);font-weight:700;letter-spacing:0.01em;line-height:1.35;">{{ amenities.0.label }}</div>
+        <div style="color:#5B6B70;font-size:12px;line-height:1.5;">{{ amenities.0.desc }}</div>
+      </div>
+      <div style="background:#FFFFFF;padding:clamp(18px,2.4vw,26px) clamp(8px,1.1vw,14px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(8px,1.2vw,12px);">
+        <div style="width:clamp(50px,5.4vw,62px);height:clamp(50px,5.4vw,62px);border-radius:50%;background:#0E2430;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(14,36,48,0.3);flex-shrink:0;"><svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation:mrBob 3.6s ease-in-out infinite;transition:transform 0.35s ease;transform-origin:center;" style-hover="transform:scale(1.22);"><path d="M4 8h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8z"/><path d="M17 9h2.2a2.3 2.3 0 0 1 0 4.6H17"/><line x1="4" y1="21" x2="17" y2="21"/></svg></div>
+        <div style="color:#0E2430;font-size:clamp(14.5px,1.4vw,16.5px);font-weight:700;letter-spacing:0.01em;line-height:1.35;">{{ amenities.1.label }}</div>
+        <div style="color:#5B6B70;font-size:12px;line-height:1.5;">{{ amenities.1.desc }}</div>
+      </div>
+      <div style="background:#FFFFFF;padding:clamp(18px,2.4vw,26px) clamp(8px,1.1vw,14px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(8px,1.2vw,12px);">
+        <div style="width:clamp(50px,5.4vw,62px);height:clamp(50px,5.4vw,62px);border-radius:50%;background:#0E2430;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(14,36,48,0.3);flex-shrink:0;"><svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation:mrFloat 3.8s ease-in-out infinite;transition:transform 0.35s ease;transform-origin:center;" style-hover="transform:scale(1.22);"><path d="M4 17v-5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5"/><path d="M3 17h18v3H3z"/><path d="M7 10V7.5A2.5 2.5 0 0 1 9.5 5h5A2.5 2.5 0 0 1 17 7.5V10"/></svg></div>
+        <div style="color:#0E2430;font-size:clamp(14.5px,1.4vw,16.5px);font-weight:700;letter-spacing:0.01em;line-height:1.35;">{{ amenities.2.label }}</div>
+        <div style="color:#5B6B70;font-size:12px;line-height:1.5;">{{ amenities.2.desc }}</div>
+      </div>
+      <div style="background:#FFFFFF;padding:clamp(18px,2.4vw,26px) clamp(8px,1.1vw,14px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(8px,1.2vw,12px);">
+        <div style="width:clamp(50px,5.4vw,62px);height:clamp(50px,5.4vw,62px);border-radius:50%;background:#0E2430;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(14,36,48,0.3);flex-shrink:0;"><svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation:mrSpin 5s ease-in-out infinite;transition:transform 0.35s ease;transform-origin:center;" style-hover="transform:scale(1.22);"><line x1="8" y1="12" x2="16" y2="12"/><rect x="4.5" y="8.5" width="3" height="7" rx="0.8"/><rect x="16.5" y="8.5" width="3" height="7" rx="0.8"/><line x1="2" y1="10.5" x2="2" y2="13.5"/><line x1="22" y1="10.5" x2="22" y2="13.5"/></svg></div>
+        <div style="color:#0E2430;font-size:clamp(14.5px,1.4vw,16.5px);font-weight:700;letter-spacing:0.01em;line-height:1.35;">{{ amenities.3.label }}</div>
+        <div style="color:#5B6B70;font-size:12px;line-height:1.5;">{{ amenities.3.desc }}</div>
+      </div>
+      <div style="background:#FFFFFF;padding:clamp(18px,2.4vw,26px) clamp(8px,1.1vw,14px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(8px,1.2vw,12px);">
+        <div style="width:clamp(50px,5.4vw,62px);height:clamp(50px,5.4vw,62px);border-radius:50%;background:#0E2430;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(14,36,48,0.3);flex-shrink:0;"><svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation:mrSway 3.4s ease-in-out infinite;transition:transform 0.35s ease;transform-origin:center;" style-hover="transform:scale(1.22);"><path d="M3 15c3-4.5 6-4.5 9 0s6 4.5 9 0"/><path d="M4 19.5c2.6-2 5.2-2 7.4 0 2.2 2 4.8 2 7.4 0"/><path d="M14.5 4l3 3-7.5 4"/></svg></div>
+        <div style="color:#0E2430;font-size:clamp(14.5px,1.4vw,16.5px);font-weight:700;letter-spacing:0.01em;line-height:1.35;">{{ amenities.4.label }}</div>
+        <div style="color:#5B6B70;font-size:12px;line-height:1.5;">{{ amenities.4.desc }}</div>
+      </div>
+      <div style="background:#FFFFFF;padding:clamp(18px,2.4vw,26px) clamp(8px,1.1vw,14px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(8px,1.2vw,12px);">
+        <div style="width:clamp(50px,5.4vw,62px);height:clamp(50px,5.4vw,62px);border-radius:50%;background:#0E2430;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(14,36,48,0.3);flex-shrink:0;"><svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="animation:mrPulse 2.8s ease-in-out infinite;transition:transform 0.35s ease;transform-origin:center;" style-hover="transform:scale(1.22);"><path d="M6 8h12l-1.2 12H7.2L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+        <div style="color:#0E2430;font-size:clamp(14.5px,1.4vw,16.5px);font-weight:700;letter-spacing:0.01em;line-height:1.35;">{{ amenities.5.label }}</div>
+        <div style="color:#5B6B70;font-size:12px;line-height:1.5;">{{ amenities.5.desc }}</div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEDIA / VIDEO -->
+  <sc-if value="{{ showVideo }}" hint-placeholder-val="{{ true }}">
+  <div id="media" style="background:#FFFFFF;padding:clamp(60px,12vw,100px) 6%;">
+    <div data-reveal="1" style="text-align:center;max-width:680px;margin:0 auto 56px;">
+      <div data-reveal="1" style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px;">
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.3em;font-size:12.5px;">{{ t.mediaEyebrow }}</div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+      </div>
+      <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);color:#0E2430;margin:0 0 16px;">{{ t.mediaTitle }}</h2>
+      <p style="color:#5B6B70;font-size:15.5px;line-height:1.7;margin:0;">{{ t.mediaSub }}</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;max-width:1200px;margin:0 auto;">
+      <sc-for list="{{ videoSlots }}" as="v" hint-placeholder-count="3">
+        <div style="position:relative;aspect-ratio:16/10;border-radius:2px;overflow:hidden;background:#EDE6DC;display:flex;align-items:center;justify-content:center;border:1px solid rgba(232,237,240,0.25);">
+          <div style="{{ v.bgStyle }}"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,11,12,0.12) 40%,rgba(14,11,12,0.7));"></div>
+          <div style="position:relative;width:58px;height:58px;border-radius:50%;border:1px solid rgba(255,255,255,0.85);background:rgba(20,16,17,0.28);display:flex;align-items:center;justify-content:center;">
+            <div style="width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-inline-start:14px solid #FFFFFF;margin-inline-start:3px;"></div>
+          </div>
+          <div style="position:absolute;bottom:14px;inset-inline-start:16px;inset-inline-end:16px;color:#F3EAE6;font-size:12px;font-family:'Heebo',sans-serif;letter-spacing:0.02em;">{{ v.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- CASINO -->
+  <div id="casino" style="position:relative;isolation:isolate;background:#0E2430;padding:clamp(52px,9vw,96px) clamp(24px,6%,80px);">
+    <img src="images/casino-aerial-sunset.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,36,48,0.93) 0%,rgba(14,36,48,0.88) 60%,rgba(7,26,34,0.96) 100%);z-index:-1;"></div>
+    <div style="max-width:1320px;margin:0 auto;display:grid;grid-template-columns:{{ casinoCols }};gap:clamp(28px,4vw,60px);align-items:center;">
+      <div style="text-align:{{ bodyAlign }};">
+        <div data-reveal="1" style="display:flex;align-items:center;justify-content:{{ bakuJustify }};gap:14px;margin-bottom:16px;">
+          <div style="width:6px;height:6px;transform:rotate(45deg);background:#E8EDF0;flex-shrink:0;"></div>
+          <div style="width:46px;height:1px;background:rgba(232,237,240,0.55);"></div>
+          <div style="font-family:'Heebo',sans-serif;color:#E8EDF0;letter-spacing:0.3em;font-size:12.5px;">{{ t.casinoEyebrow }}</div>
+          <div style="width:46px;height:1px;background:rgba(232,237,240,0.55);"></div>
+          <div style="width:6px;height:6px;transform:rotate(45deg);background:#E8EDF0;flex-shrink:0;"></div>
+        </div>
+        <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.16;margin:0 0 18px;color:#FFFFFF;text-wrap:pretty;">{{ t.casinoTitle }}</h2>
+        <p style="font-size:clamp(15px,1.5vw,17px);line-height:1.9;color:rgba(255,255,255,0.9);margin:0 0 14px;max-width:54ch;text-wrap:pretty;">{{ t.casinoBody1 }}</p>
+        <p style="font-size:clamp(14px,1.4vw,15.5px);line-height:1.85;color:rgba(255,255,255,0.7);margin:0 0 26px;max-width:54ch;text-wrap:pretty;">{{ t.casinoBody2 }}</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,45%),1fr));gap:10px;">
+          <sc-for list="{{ casinoStats }}" as="s" hint-placeholder-count="4">
+            <div style="background:rgba(255,255,255,0.06);border:none;padding:18px 12px;display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;transition:background 0.35s ease,transform 0.35s ease;" style-hover="background:rgba(255,255,255,0.11);transform:translateY(-3px);">
+              <div style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(20px,2vw,26px);color:#FFFFFF;line-height:1.1;white-space:nowrap;">{{ s.value }}</div>
+              <div style="font-size:12.5px;letter-spacing:0.03em;color:#E8EDF0;">{{ s.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div data-reveal="1" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1vw,12px);">
+        <div style="grid-column:1 / -1;position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#06161E;box-shadow:0 24px 54px rgba(0,0,0,0.4);">
+          <img src="images/casino-interior.jpg" alt="{{ t.casinoTitle }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(.16,.84,.44,1);" style-hover="transform:scale(1.05);" />
+        </div>
+        <div style="position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#06161E;">
+          <img src="images/casino-facade-sunset.jpg" alt="{{ t.casinoTitle }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(.16,.84,.44,1);" style-hover="transform:scale(1.06);" />
+        </div>
+        <div style="position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#06161E;">
+          <img src="images/casino-aerial-sunset.jpg" alt="{{ t.casinoTitle }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(.16,.84,.44,1);" style-hover="transform:scale(1.06);" />
+        </div>
+        <div style="position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:#06161E;">
+          <img src="images/casino-entrance.jpg" alt="{{ t.casinoTitle }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.8s cubic-bezier(.16,.84,.44,1);" style-hover="transform:scale(1.06);" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAKU / SEA BREEZE -->
+  <div style="background:#FAF7F1;border-top:1px solid rgba(20,20,20,0.06);padding:clamp(38px,5vw,56px) clamp(20px,3.5%,44px);">
+  <div style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:{{ bakuCols }};gap:clamp(22px,2.6vw,40px);align-items:center;">
+    <div style="display:flex;flex-direction:column;justify-content:center;order:1;text-align:{{ bakuAlign }};align-items:{{ bakuItems }};">
+      <div data-reveal="1" style="display:flex;align-items:center;justify-content:{{ bakuJustify }};gap:14px;margin-bottom:16px;">
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.3em;font-size:12.5px;">{{ t.bakuEyebrow }}</div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+      </div>
+      <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.16;letter-spacing:-0.01em;margin:0 0 24px;color:#0E2430;text-wrap:pretty;">{{ t.bakuTitle }}</h2>
+      <p style="font-size:16.5px;line-height:1.85;color:#0E2430;margin:0 0 22px;max-width:56ch;text-wrap:pretty;">{{ t.bakuBody }}</p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <sc-for list="{{ bakuPoints }}" as="pt" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;background:#FFFFFF;padding:12px 16px;transition:transform 0.35s ease,box-shadow 0.35s ease;" style-hover="transform:translateY(-3px);box-shadow:0 12px 28px rgba(14,36,48,0.1);">
+            <div style="width:38px;height:38px;border-radius:50%;background:#0E2430;color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{{ pt.num }}</div>
+            <div style="font-size:15.5px;font-weight:600;color:#0E2430;line-height:1.55;text-wrap:pretty;">{{ pt.text }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div data-reveal="1" style="order:2;position:relative;aspect-ratio:16/10;max-height:clamp(260px,34vw,470px);overflow:hidden;background:#101010;box-shadow:0 26px 60px rgba(20,20,20,0.16);">
+      <img src="images/baku-city-night.png" alt="קו הרקיע של באקו בשעות הערב" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.04) 50%,rgba(0,0,0,0.28));"></div>
+      <div style="position:absolute;inset:clamp(14px,1.8vw,22px);border:1px solid rgba(255,255,255,0.3);pointer-events:none;"></div>
+    </div>
+  </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div style="background:#FFFFFF;padding:clamp(60px,12vw,100px) 6% 40px;">
+    <div data-reveal="1" style="text-align:center;max-width:1100px;margin:0 auto 40px;">
+      <div data-reveal="1" style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px;">
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.3em;font-size:12.5px;">{{ t.galleryEyebrow }}</div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+      </div>
+      <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);color:#0E2430;margin:0;white-space:{{ titleWrap }};">{{ t.galleryTitle }}</h2>
+    </div>
+    <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:30px;">
+      <sc-for list="{{ galleryTopics }}" as="tp" hint-placeholder-count="3">
+        <button onclick="{{ tp.select }}" style="display:inline-flex;align-items:center;gap:9px;background:{{ tp.bg }};color:{{ tp.color }};border:1px solid {{ tp.border }};font-family:'Heebo',sans-serif;font-size:14.5px;font-weight:700;letter-spacing:0.02em;padding:12px 24px;border-radius:26px;cursor:pointer;min-height:48px;transition:background 0.3s ease,color 0.3s ease,border-color 0.3s ease,box-shadow 0.3s ease;box-shadow:{{ tp.shadow }};">
+          <span>{{ tp.label }}</span>
+          <span style="font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:12px;background:{{ tp.badgeBg }};color:{{ tp.badgeColor }};">{{ tp.count }}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ galleryCols }};grid-auto-rows:{{ galleryRowH }};gap:clamp(8px,1vw,12px);max-width:1200px;margin:0 auto;">
+      <sc-for list="{{ galleryImages }}" as="g" hint-placeholder-count="6">
+        <button onclick="{{ g.open }}" aria-label="{{ g.alt }}" style="position:relative;padding:0;border:none;background:#EDE6DC;overflow:hidden;cursor:zoom-in;display:block;width:100%;height:100%;grid-row:{{ g.span }};">
+          <img src="{{ g.src }}" alt="{{ g.alt }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.7s cubic-bezier(.16,.84,.44,1);" style-hover="transform:scale(1.06);" />
+          <span style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,22,30,0) 45%,rgba(6,22,30,0.72) 100%);opacity:0;transition:opacity 0.4s ease;" style-hover="opacity:1;"></span>
+          <span style="position:absolute;inset-inline:0;bottom:0;padding:14px 16px;display:flex;align-items:flex-end;justify-content:space-between;gap:10px;opacity:0;transform:translateY(8px);transition:opacity 0.4s ease,transform 0.4s ease;" style-hover="opacity:1;transform:translateY(0);">
+            <span style="font-family:'Heebo',sans-serif;font-size:13.5px;font-weight:600;color:#FFFFFF;line-height:1.45;text-align:{{ startAlign }};text-shadow:0 2px 10px rgba(0,0,0,0.5);">{{ g.alt }}</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" style="flex-shrink:0;"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2M11 8v6M8 11h6"/></svg>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="font-size:13px;color:#5B6B70;text-align:center;margin-top:16px;">{{ t.galleryHint }}</div>
+  </div>
+
+  <sc-if value="{{ lightboxOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;inset:0;z-index:400;background:rgba(6,16,20,0.95);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:clamp(14px,4vw,44px);">
+      <div onclick="{{ closeLightbox }}" style="position:absolute;inset:0;cursor:zoom-out;"></div>
+      <img src="{{ lightboxSrc }}" alt="{{ lightboxAlt }}" style="position:relative;max-width:100%;max-height:74vh;object-fit:contain;display:block;box-shadow:0 30px 70px rgba(0,0,0,0.5);" />
+      <div style="position:relative;display:flex;align-items:center;gap:14px;">
+        <button onclick="{{ prevLightbox }}" aria-label="{{ t.galleryPrev }}" style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.4);color:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg>
+        </button>
+        <div style="font-family:'Heebo',sans-serif;font-size:13.5px;color:#DCE3E7;letter-spacing:0.08em;min-width:74px;text-align:center;" dir="ltr">{{ lightboxCounter }}</div>
+        <button onclick="{{ nextLightbox }}" aria-label="{{ t.galleryNext }}" style="width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.4);color:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div style="position:relative;font-size:14.5px;color:#FFFFFF;text-align:center;max-width:56ch;line-height:1.6;">{{ lightboxAlt }}</div>
+      <button onclick="{{ closeLightbox }}" aria-label="{{ t.close }}" style="position:absolute;top:14px;inset-inline-end:14px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.45);color:#FFFFFF;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">×</button>
+    </div>
+  </sc-if>
+
+
+  <!-- SERVICES -->
+  <div style="position:relative;background:#0E2430;padding:clamp(60px,9vw,112px) clamp(24px,6%,80px);overflow:hidden;">
+    <div style="position:absolute;inset-inline-end:-6%;top:-10%;width:min(520px,60vw);height:min(520px,60vw);border-radius:50%;border:1px solid rgba(232,237,240,0.14);pointer-events:none;"></div>
+    <div style="position:absolute;inset-inline-start:-10%;bottom:-18%;width:min(420px,50vw);height:min(420px,50vw);border-radius:50%;background:radial-gradient(circle,rgba(232,237,240,0.09),transparent 70%);pointer-events:none;"></div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:{{ locCols }};gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(44px,6vw,72px);">
+        <div style="text-align:{{ bodyAlign }};">
+          <div data-reveal="1" style="display:flex;align-items:center;justify-content:{{ bakuJustify }};gap:14px;margin-bottom:16px;">
+            <div style="width:6px;height:6px;transform:rotate(45deg);background:#E8EDF0;flex-shrink:0;"></div>
+            <div style="width:46px;height:1px;background:rgba(232,237,240,0.55);"></div>
+            <div style="font-family:'Heebo',sans-serif;color:#E8EDF0;letter-spacing:0.3em;font-size:12.5px;">{{ t.servicesEyebrow }}</div>
+            <div style="width:46px;height:1px;background:rgba(232,237,240,0.55);"></div>
+            <div style="width:6px;height:6px;transform:rotate(45deg);background:#E8EDF0;flex-shrink:0;"></div>
+          </div>
+          <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.16;color:#FFFFFF;margin:0;">{{ t.servicesTitle }}</h2>
+        </div>
+        <p style="font-size:clamp(15.5px,1.5vw,17.5px);line-height:1.9;color:rgba(255,255,255,0.78);margin:0;text-align:{{ bodyAlign }};text-wrap:pretty;">{{ t.supportBody }}</p>
+      </div>
+
+      <div style="position:relative;display:grid;grid-template-columns:{{ servicesCols }};gap:{{ stepsGap }};">
+        <div style="position:absolute;{{ stepsLinePos }};background:linear-gradient(90deg,rgba(232,237,240,0.05),rgba(232,237,240,0.45),rgba(232,237,240,0.05));pointer-events:none;"></div>
+        <sc-for list="{{ services }}" as="sv" hint-placeholder-count="4">
+          <div data-reveal="1" style="position:relative;display:flex;flex-direction:column;align-items:{{ stepsAlign }};text-align:{{ stepsText }};gap:14px;padding-inline-start:{{ stepsPadStart }};">
+            <div style="position:relative;width:72px;height:72px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+              <div style="position:absolute;inset:0;border-radius:50%;background:#0E2430;border:1px solid rgba(232,237,240,0.45);transition:border-color 0.4s ease,transform 0.4s ease;" style-hover="border-color:#E8EDF0;transform:scale(1.06);"></div>
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E8EDF0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="position:relative;"><path d="{{ sv.icon }}"/></svg>
+              <div style="position:absolute;top:-6px;inset-inline-end:-8px;min-width:26px;height:26px;padding:0 6px;border-radius:13px;background:#E8EDF0;color:#0E2430;font-family:'Heebo',sans-serif;font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;">{{ sv.num }}</div>
+            </div>
+            <div style="font-family:'Heebo',sans-serif;font-size:clamp(19px,2vw,23px);font-weight:700;color:#FFFFFF;line-height:1.3;text-wrap:balance;">{{ sv.title }}</div>
+            <div style="width:28px;height:2px;background:rgba(232,237,240,0.6);"></div>
+            <div style="font-size:clamp(14.5px,1.4vw,16px);line-height:1.85;color:rgba(255,255,255,0.8);max-width:32ch;text-wrap:pretty;">{{ sv.text }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- UNIT TYPES -->
+  <div style="background:#FFFFFF;padding:clamp(60px,12vw,100px) 6% 80px;">
+    <div data-reveal="1" style="text-align:center;max-width:680px;margin:0 auto 56px;">
+      <div data-reveal="1" style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px;">
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.3em;font-size:12.5px;">{{ t.unitsEyebrow }}</div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+      </div>
+      <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);color:#0E2430;margin:0;">{{ t.unitsTitle }}</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ unitCols }};gap:clamp(10px,1.4vw,18px);max-width:1320px;margin:0 auto;">
+      <sc-if value="{{ dataReady }}" hint-placeholder-val="{{ false }}">
+      <sc-for list="{{ unitTypes }}" as="u" hint-placeholder-count="4">
+        <div style="background:#FFFFFF;border:1px solid rgba(14,36,48,0.16);display:flex;flex-direction:column;">
+          <div style="width:100%;aspect-ratio:3/4;background:#FFFFFF;border-bottom:1px solid rgba(14,36,48,0.12);display:flex;align-items:center;justify-content:center;padding:6px;">
+            <sc-if value="{{ u.hasPlan }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ u.img }}" target="_blank" rel="noopener" title="{{ t.unitsZoom }}" role="img" aria-label="{{ u.name }}" style="display:block;width:100%;height:100%;background-image:url({{ u.img }});background-size:contain;background-repeat:no-repeat;background-position:center;cursor:zoom-in;"></a>
+            </sc-if>
+            <sc-if value="{{ u.noPlan }}" hint-placeholder-val="{{ false }}">
+              <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.14em;font-size:13px;text-align:center;opacity:0.75;">{{ t.unitsSoon }}</div>
+            </sc-if>
+          </div>
+          <div style="padding:24px 20px;display:flex;flex-direction:column;gap:12px;">
+            <div style="font-family:'Heebo',sans-serif;font-weight:600;font-size:19px;color:#0E2430;">{{ u.name }}</div>
+            <div style="display:flex;flex-direction:column;gap:6px;">
+              <div style="display:flex;justify-content:space-between;font-size:14px;color:#0E2430;border-bottom:1px solid rgba(0,0,0,0.06);padding-bottom:6px;"><span>{{ t.unitsSize }}</span><span style="font-weight:600;color:#0E2430;">{{ u.size }}</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:14px;color:#0E2430;border-bottom:1px solid rgba(0,0,0,0.06);padding-bottom:6px;"><span>{{ t.unitsRooms }}</span><span style="font-weight:600;color:#0E2430;">{{ u.rooms }}</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:14px;color:#0E2430;border-bottom:1px solid rgba(0,0,0,0.06);padding-bottom:6px;"><span>{{ t.unitsBath }}</span><span style="font-weight:600;color:#0E2430;">{{ u.baths }}</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:14px;color:#0E2430;"><span>{{ t.unitsView }}</span><span style="font-weight:600;color:#0E2430;">{{ u.view }}</span></div>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="position:relative;isolation:isolate;padding:clamp(56px,8vw,104px) clamp(24px,6%,80px);overflow:hidden;">
+    <img src="images/miami-evening-entrance.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(14,36,48,0.94) 0%,rgba(14,36,48,0.8) 48%,rgba(14,36,48,0.42) 100%);z-index:-1;"></div>
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:{{ tourCols }};gap:clamp(24px,4vw,56px);align-items:center;text-align:{{ bodyAlign }};">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,0.12);border:1px solid rgba(232,237,240,0.5);padding:8px 16px;border-radius:20px;margin-bottom:20px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#E8EDF0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7M6 10v10h12V10M10 20v-6h4v6"/></svg>
+          <span style="font-size:12.5px;font-weight:600;letter-spacing:0.06em;color:#FFFFFF;">{{ t.plansBadge }}</span>
+        </div>
+        <div style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.16;color:#FFFFFF;margin-bottom:14px;text-wrap:balance;">{{ t.ctaPlansTitle }}</div>
+        <div style="font-size:clamp(16px,1.6vw,18.5px);line-height:1.85;color:rgba(255,255,255,0.86);max-width:50ch;margin-bottom:28px;text-wrap:pretty;">{{ t.ctaPlansText }}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <a href="#contact" style="display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;color:#0E2430;padding:17px 34px;font-size:16px;font-weight:700;border-radius:32px;min-height:54px;transition:transform 0.3s ease,box-shadow 0.3s ease;" style-hover="transform:translateY(-3px);box-shadow:0 16px 36px rgba(0,0,0,0.35);color:#0E2430;">
+            <span>{{ t.ctaPlansBtn }}</span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0E2430" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6-6 6 6 6"/><path d="M20 12H4.5"/></svg>
+          </a>
+          <a href="tel:0523699316" style="display:inline-flex;align-items:center;gap:10px;background:transparent;border:1px solid rgba(255,255,255,0.6);color:#FFFFFF;padding:17px 30px;font-size:15.5px;font-weight:700;border-radius:32px;min-height:54px;transition:background 0.3s ease;" style-hover="background:rgba(255,255,255,0.14);color:#FFFFFF;">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1z"/></svg>
+            <span>{{ t.ctaCallShort }}</span>
+          </a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,0.18);">
+        <sc-for list="{{ plansSizes }}" as="ps" hint-placeholder-count="4">
+          <div style="background:rgba(14,36,48,0.72);padding:16px 22px;display:flex;align-items:center;gap:14px;">
+            <span style="width:8px;height:8px;border-radius:50%;background:#E8EDF0;flex-shrink:0;"></span>
+            <span style="font-size:15.5px;font-weight:600;color:#FFFFFF;line-height:1.5;">{{ ps.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq" style="background:#FFFFFF;padding:clamp(56px,9vw,100px) clamp(24px,6%,80px);">
+    <div data-reveal="1" style="text-align:center;max-width:760px;margin:0 auto clamp(32px,4vw,48px);">
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px;">
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.3em;font-size:12.5px;">{{ t.faqEyebrow }}</div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+      </div>
+      <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.16;color:#0E2430;margin:0 0 16px;">{{ t.faqTitle }}</h2>
+      <p style="font-size:16.5px;line-height:1.85;color:#5B6B70;margin:0;text-wrap:pretty;">{{ t.faqIntro }}</p>
+    </div>
+    <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div style="border-bottom:1px solid rgba(14,36,48,0.16);background:{{ f.cardBg }};transition:background 0.3s ease;" style-hover="background:#FBF9F5;">
+          <div onclick="{{ f.toggle }}" style="display:grid;grid-template-columns:auto 1fr;align-items:center;gap:20px;padding:clamp(20px,2.4vw,28px) clamp(6px,1.2vw,14px);cursor:pointer;min-height:60px;">
+            <div style="width:38px;height:38px;border-radius:50%;background:{{ f.signBg }};color:{{ f.signColor }};font-size:21px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.3s ease,color 0.3s ease;">{{ f.sign }}</div>
+            <div style="font-size:clamp(17px,1.8vw,20px);font-weight:700;color:#0E2430;line-height:1.45;text-align:{{ startAlign }};">{{ f.q }}</div>
+          </div>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 58px clamp(22px,2.6vw,30px) clamp(6px,1.2vw,14px);font-size:16px;line-height:1.95;color:#3C4A52;text-align:{{ startAlign }};text-wrap:pretty;">{{ f.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(30px,4vw,44px);">
+      <a href="faq.html" style="display:inline-flex;align-items:center;gap:9px;background:#0E2430;color:#FFFFFF;padding:16px 32px;font-size:15.5px;font-weight:700;border-radius:30px;min-height:52px;transition:transform 0.3s ease;" style-hover="transform:translateY(-2px);color:#FFFFFF;">
+        <span>{{ t.faqMore }}</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m10 6-6 6 6 6"/><path d="M20 12H4.5"/></svg>
+      </a>
+      <a href="tel:0523699316" style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(14,36,48,0.35);color:#0E2430;padding:16px 28px;font-size:15.5px;font-weight:700;border-radius:30px;min-height:52px;transition:background 0.3s ease;" style-hover="background:#F6F2EC;color:#0E2430;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2430" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1z"/></svg>
+        <span>{{ t.ctaCallShort }}</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- HIGHLIGHTS BAND -->
+  <div style="background:#F6F2EC;padding:clamp(48px,7vw,72px) 6%;position:relative;overflow:hidden;">
+    <div style="position:relative;text-align:center;max-width:680px;margin:0 auto 36px;">
+      <div data-reveal="1" style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px;">
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="font-family:'Heebo',sans-serif;color:#0E2430;letter-spacing:0.3em;font-size:12.5px;">{{ t.numbersEyebrow }}</div>
+        <div style="width:46px;height:1px;background:rgba(14,36,48,0.5);"></div>
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#0E2430;flex-shrink:0;"></div>
+      </div>
+      <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);color:#0E2430;margin:0 0 14px;">{{ t.numbersTitle }}</h2>
+      <p style="color:#5B6B70;font-size:15px;line-height:1.7;margin:0;">{{ t.numbersSub }}</p>
+    </div>
+    <div style="position:relative;display:grid;grid-template-columns:{{ highlightsCols }};gap:clamp(8px,1vw,12px);max-width:1280px;margin:0 auto;align-items:stretch;">
+      <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="5">
+        <div data-reveal="1" style="background:#FFFFFF;padding:clamp(18px,2.6vw,28px) clamp(10px,1.4vw,16px);display:flex;flex-direction:column;align-items:center;text-align:center;gap:clamp(8px,2vw,13px);transition:transform 0.4s ease,box-shadow 0.4s ease;" style-hover="transform:translateY(-6px);box-shadow:0 14px 34px rgba(20,20,20,0.08);">
+          <div style="width:clamp(50px,5.6vw,64px);height:clamp(50px,5.6vw,64px);border-radius:50%;background:#0E2430;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(14,36,48,0.3);flex-shrink:0;">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="transition:transform 0.35s ease;transform-origin:center;" style-hover="transform:scale(1.18);"><path d="{{ h.icon }}"/></svg>
+          </div>
+          <div style="font-family:'Heebo',sans-serif;font-size:clamp(21px,2vw,27px);line-height:1.15;color:#0E2430;font-weight:700;letter-spacing:0.01em;text-wrap:balance;">{{ h.title }}</div>
+          <div style="color:#0E2430;font-size:clamp(13.5px,1.3vw,14.5px);font-weight:600;line-height:1.5;max-width:20ch;text-wrap:pretty;">{{ h.sub }}</div>
+          <sc-if value="{{ h.hasNote }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:11.5px;color:#5B6B70;line-height:1.6;border-top:1px solid rgba(14,36,48,0.16);padding-top:9px;max-width:24ch;text-wrap:pretty;">{{ h.note }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" style="position:relative;isolation:isolate;background:#0E2430;padding:clamp(60px,12vw,100px) 6%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:clamp(36px,6vw,60px);max-width:100%;margin:0 auto;">
+    <img src="images/miami-daylight-plaza.jpeg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;" />
+    <div style="position:absolute;inset:0;background:linear-gradient(100deg,rgba(14,36,48,0.97) 0%,rgba(14,36,48,0.93) 55%,rgba(14,36,48,0.86) 100%);z-index:-1;"></div>
+    <div style="display:flex;flex-direction:column;justify-content:center;align-items:{{ contactAlign }};text-align:{{ contactText }};">
+      <div style="display:flex;align-items:center;justify-content:{{ contactJustify }};gap:14px;margin-bottom:16px;">
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#E8EDF0;flex-shrink:0;"></div>
+        <div style="width:46px;height:1px;background:rgba(232,237,240,0.55);"></div>
+        <div style="font-family:'Heebo',sans-serif;color:#E8EDF0;letter-spacing:0.3em;font-size:12.5px;">{{ t.contactEyebrow }}</div>
+        <div style="width:46px;height:1px;background:rgba(232,237,240,0.55);"></div>
+        <div style="width:6px;height:6px;transform:rotate(45deg);background:#E8EDF0;flex-shrink:0;"></div>
+      </div>
+      <h2 data-reveal="1" style="font-family:'Heebo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,52px);line-height:1.16;color:#FFFFFF;margin:0 0 22px;">{{ t.contactTitle }}</h2>
+      <p style="font-size:16px;line-height:1.85;color:#DCE3E7;margin:0 0 30px;max-width:420px;">{{ t.contactBody }}</p>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <a href="tel:0523699316" style="display:flex;align-items:center;gap:12px;color:#FFFFFF;">
+          <span style="width:42px;height:42px;border:1px solid #0E2430;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E8EDF0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1z"/></svg></span>
+          <span><span style="display:block;color:#9FB4B7;font-size:12.5px;">{{ t.contactPhoneLabel }}</span><span dir="ltr" style="display:block;color:#FFFFFF;font-size:18px;letter-spacing:0.04em;">052-369-9316</span></span>
+        </a>
+        <a href="mailto:seabreeze.isr.az@gmail.com" style="display:flex;align-items:center;gap:12px;color:#FFFFFF;">
+          <span style="width:42px;height:42px;border:1px solid #0E2430;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E8EDF0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span dir="ltr" style="font-size:15.5px;color:#FFFFFF;">seabreeze.isr.az@gmail.com</span>
+        </a>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="width:42px;height:42px;border:1px solid #0E2430;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#E8EDF0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
+          <span style="font-size:15.5px;color:#FFFFFF;">{{ t.contactAddress }}</span>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ formSubmitted }}" hint-placeholder-val="{{ false }}">
+      <div style="background:rgba(8,26,35,0.92);border:1px solid rgba(232,237,240,0.28);padding:clamp(30px,7vw,50px) clamp(20px,5vw,36px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;">
+        <div style="font-family:'Heebo',sans-serif;font-size:26px;color:#E8EDF0;">{{ t.formThanksTitle }}</div>
+        <div style="font-size:15px;color:#DCE3E7;line-height:1.7;">{{ t.formThanksBody }}</div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ formNotSubmitted }}" hint-placeholder-val="{{ true }}">
+      <form onsubmit="{{ handleSubmit }}" style="background:rgba(8,26,35,0.92);border:1px solid rgba(232,237,240,0.28);padding:clamp(26px,6vw,44px) clamp(20px,5vw,36px);display:flex;flex-direction:column;gap:20px;">
+        <input required="{{ true }}" name="name" placeholder="{{ t.formName }}" style="background:transparent;border:none;border-bottom:1px solid rgba(232,237,240,0.35);color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:15px;padding:10px 2px;outline:none;" />
+        <input required="{{ true }}" name="phone" placeholder="{{ t.formPhone }}" style="background:transparent;border:none;border-bottom:1px solid rgba(232,237,240,0.35);color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:15px;padding:10px 2px;outline:none;" />
+        <input name="email" type="email" placeholder="{{ t.formEmail }}" style="background:transparent;border:none;border-bottom:1px solid rgba(232,237,240,0.35);color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:15px;padding:10px 2px;outline:none;" />
+        <textarea name="message" placeholder="{{ t.formMessage }}" rows="3" style="background:transparent;border:none;border-bottom:1px solid rgba(232,237,240,0.35);color:#FFFFFF;font-family:'Heebo',sans-serif;font-size:15px;padding:10px 2px;outline:none;resize:none;"></textarea>
+        <button type="submit" style="background:#0E2430;color:#FFFFFF;border:none;padding:16px;font-size:15px;letter-spacing:0.05em;border-radius:24px;font-weight:700;cursor:pointer;margin-top:8px;box-shadow:0 8px 22px rgba(14,36,48,0.45);">{{ t.formSubmit }}</button>
+      </form>
+    </sc-if>
+  </div>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;bottom:0;left:0;right:0;z-index:120;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,0.16);box-shadow:0 -8px 24px rgba(0,0,0,0.22);">
+      <a href="tel:0523699316" style="background:#0E2430;color:#FFFFFF;padding:14px 6px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;min-height:56px;justify-content:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8EDF0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2.1z"/></svg>
+        {{ t.barCall }}
+      </a>
+      <a href="https://wa.me/972523699316" style="background:#0E2430;color:#FFFFFF;padding:14px 6px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;min-height:56px;justify-content:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8EDF0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.2-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg>
+        {{ t.barWhatsapp }}
+      </a>
+      <a href="#contact" style="background:#0E2430;color:#FFFFFF;padding:14px 6px;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:700;min-height:56px;justify-content:center;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
+        {{ t.barForm }}
+      </a>
+    </div>
+  </sc-if>
+
+  <!-- FOOTER -->
+  <div style="background:#FFFFFF;padding:50px 6% 34px;display:flex;flex-direction:column;align-items:center;gap:22px;border-top:1px solid rgba(14,36,48,0.12);">
+    <img src="images/logo-horizontal-black.png" alt="Miami Residence" style="height:26px;width:auto;object-fit:contain;display:block;" />
+    <div style="display:flex;gap:30px;flex-wrap:wrap;justify-content:center;">
+      <a href="about.html" style="color:#0E2430;font-size:13.5px;font-weight:600;padding:6px 2px;" style-hover="color:#0E2430;">{{ t.navAbout }}</a>
+      <a href="media.html" style="color:#0E2430;font-size:13.5px;font-weight:600;padding:6px 2px;" style-hover="color:#0E2430;">{{ t.navMedia }}</a>
+      <a href="faq.html" style="color:#0E2430;font-size:13.5px;font-weight:600;padding:6px 2px;" style-hover="color:#0E2430;">{{ t.navFaq }}</a>
+      <a href="contact.html" style="color:#0E2430;font-size:13.5px;font-weight:600;padding:6px 2px;" style-hover="color:#0E2430;">{{ t.navContact }}</a>
+    </div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;justify-content:center;font-size:13.5px;" dir="ltr">
+      <a href="tel:0523699316" style="color:#0E2430;font-weight:600;">052-369-9316</a>
+      <a href="mailto:seabreeze.isr.az@gmail.com" style="color:#0E2430;font-weight:600;">seabreeze.isr.az@gmail.com</a>
+    </div>
+    <div style="font-size:12px;color:#6B7A82;letter-spacing:0.02em;text-align:center;line-height:1.7;max-width:70ch;">{{ t.footerNote }}</div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showVideoPlaceholder&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;},&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;he&quot;,&quot;options&quot;:[&quot;he&quot;,&quot;en&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+
+const HE = {
+  langToggle: 'EN', dir: 'rtl',
+  navAbout: 'אודות', navAmenities: 'הפרויקט', navMedia: 'מדיה', navFaq: 'שאלות ותשובות', navContact: 'צור קשר',
+  heroEyebrow: 'SEA BREEZE · BAKU', heroTitle: 'Sea Breeze Baku', heroTitleEn: 'Sea Breeze Baku', heroTitleHe: 'הדבר הבא בתחום הנדל״ן!', heroScript: 'פרויקט היוקרה: Miami Residence', heroSub: 'פרויקט מיאמי היוקרתי, הממוקם בקו ראשון לים, 6 דקות הליכה מהקזינו החדש, הוא ההשקעה החכמה הבאה שלכם.', heroSubEn: 'LUXURY LIVING · FIRST SEA LINE',
+  heroCta1: 'לשיחה ישירה עם מנהל המשרד', heroCta2: 'לתיאום שיחה עם מנהל המשרד', ctaCallShort: 'לשיחה ישירה', unitsZoom: 'להגדלת התכנית',
+  aboutEyebrow: 'המתחם', aboutTitlePre: 'רצועת החוף', aboutTitleScript: 'Sea Breeze',
+  aboutBody1: 'סיבריז היא עיר נופש ומגורים על חוף הים הכספי, המשלבת חופים, מלונות, מסעדות, מסחר ומוקדי פנאי. בתוך המתחם ממוקם Miami Residence, פרויקט יוקרה בקו ראשון לים, עם בריכות, בתי קפה, בוטיקים ומרחבי עבודה.',
+  aboutBody2: '',
+  amenEyebrow: 'פנאי ובילוי', amenTitle: 'חוויית הפנאי והבילוי סביב הפרויקט', amenSub: 'חוף פרטי ובריכות, בתי קפה ומסעדות, שופינג, ספא ומתחמי ספורט. חוויית נופש שמשלימה את המיקום של מיאמי בלב סיבריז.',
+  amenNote: 'הכיתוב שמתחת לכל מתקן מציין אם הוא בפרויקט או במתחם סיבריז שסביבו. השימוש בחלק מהמתקנים כרוך בתשלום ואינו כלול במחיר הדירה.',
+  unitsEyebrow: 'דירות', unitsTitle: 'תכניות דירות לדוגמה בפרויקט',
+  unitsSoon: 'לפרטים פנו למשרדנו', unitsSize: 'שטח', unitsRooms: 'חדרי שינה', unitsBath: 'חדרי רחצה', unitsView: 'מרפסת',
+  unitTypes: [
+    {id:'unit-s1', name:'סטודיו', size:'40–45 מ״ר', rooms:'סטודיו', baths:'1', view:'כן', img:'images/plan-studio-40-45.png', hasPlan:true},
+    {id:'unit-s2', name:'סטודיו', size:'45–50 מ״ר', rooms:'סטודיו', baths:'1', view:'כן', img:'images/plan-studio-45-50.png', hasPlan:true},
+    {id:'unit-s3', name:'סטודיו', size:'50–60 מ״ר', rooms:'סטודיו', baths:'1', view:'כן', img:'images/plan-studio-50-60.png', hasPlan:true},
+    {id:'unit-1br', name:'דירת חדר שינה אחד', size:'65 מ״ר', rooms:'1', baths:'1', view:'כן', img:'images/plan-one-bed-65.png', hasPlan:true},
+  ],
+  casinoEyebrow: 'הקזינו של Sea Breeze', casinoTitle: 'Royale Casino – הקזינו הגדול באירופה',
+  casinoBody1: 'קזינו Royale הוא חלק מתוכנית הפיתוח של סיבריז כיעד תיירות ובילוי בינלאומי. מיאמי ממוקם במרחק 6 דקות הליכה ממנו, לצד החוף והאי המלאכותי.',
+  casinoBody2: 'הקזינו נמצא בהקמה. הנתונים מבוססים על תוכניות היזם ואינם מתארים פעילות קיימת. פיתוח האזור והתיירות שהוא מושך עשויים להשפיע על פוטנציאל ההשכרה בסביבה.',
+  casinoStats: [
+    {id:'c1', value:'90,000 מ״ר', label:'שטח מתוכנן'},
+    {id:'c2', value:'מעל 100', label:'שולחנות משחק'},
+    {id:'c3', value:'1,500', label:'מכונות משחק'},
+    {id:'c4', value:'6 דקות', label:'הליכה מהפרויקט'},
+  ],
+  masterplanEyebrow: 'תוכנית אב', masterplanTitle: 'הפרויקט על המפה', masterplanImgAlt: 'תוכנית אב של Sea Breeze באקו',
+  masterplanPins: [
+    {id:'p1', label:'מגדל היוקרה', left:'75%', top:'24%'},
+    {id:'p2', label:'איי המלונות', left:'46%', top:'46%'},
+    {id:'p3', label:'לונה פארק וגלגל ענק', left:'54%', top:'80%'},
+    {id:'p4', label:'וילות חוף', left:'8%', top:'46%'},
+    {id:'p5', label:'שכונת המגורים', left:'30%', top:'66%'},
+  ],
+  whyEyebrow: 'הזדמנות ייחודית', whyTitle: 'למה Sea Breeze באקו',
+  whySub: 'מיקום על קו החוף הראשון, בלב אזור שהופך למוקד התיירות והבילוי המוביל של באקו, עם קרבה לכל מה שהעיר המתפתחת הזו מציעה.',
+  whyItems: [
+    {id:'why-casino', label:'קזינו', desc:'קזינו יוקרתי בהישג יד, מוקד בילוי ובידור לתושבים ולאורחים.', iconHtml:{__html:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.3" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.3" fill="currentColor" stroke="none"/></svg>'}},
+    {id:'why-hotels', label:'מלונות יוקרה', desc:'מלונות בוטיק ומותגים בינלאומיים לאורך רצועת החוף.', iconHtml:{__html:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M12 11h.01M9 15h.01M15 15h.01"/></svg>'}},
+    {id:'why-restaurants', label:'מסעדות', desc:'מסעדות שף ובתי קפה עם נוף ים פתוח לכל אורך היום.', iconHtml:{__html:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 2v8a2 2 0 0 0 2 2v10M7 2v20M11 2v10M17 2c-1.7 0-3 2-3 5s1.3 5 3 5v10"/></svg>'}},
+    {id:'why-yield', label:'תשואת נדל״ן', desc:'שוק צומח עם ביקוש עולה ופוטנציאל תשואה גבוה למשקיע.', iconHtml:{__html:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>'}},
+  ],
+  bakuEyebrow: 'עיר הבירה באקו', bakuTitle: 'יוקרה וחדשנות',
+  bakuBody: 'עיר מתקדמת ובינלאומית שמחברת היסטוריה, עסקים ואורח חיים יוקרתי. לצד העיר העתיקה וקו הרקיע המודרני, באקו מציעה מלונות פרימיום, מותגי יוקרה, מסעדות ומוקדי תרבות ובילוי.',
+  bakuSlot: 'כאן נכנס צילום אמיתי ומרשים של העיר באקו (קו רקיע, העיר העתיקה או הטיילת). גררו לכאן קובץ תמונה.',
+  bakuImgAlt: 'נוף אווירי של אזור הפרויקט', bakuVideoLabel: 'סרטון על באקו, יעלה בקרוב',
+  galleryEyebrow: 'גלריה', galleryTitle: 'מיאמי, סיבריז ובאקו מקרוב',
+  galleryHint: 'לחצו על תמונה להגדלה ולניווט בין התמונות.', galleryPrev: 'לתמונה הקודמת', galleryNext: 'לתמונה הבאה', close: 'סגירה',
+  galleryTopics: [
+    {id:'miami', label:'מיאמי רזידנס'},
+    {id:'seabreeze', label:'Sea Breeze'},
+    {id:'baku', label:'באקו'},
+  ],
+  galleryMiami: [
+    {src:'images/miami-sunset.jpeg', span:'span 2', alt:'הדמיית Miami Residence בשעת שקיעה'},
+    {src:'images/miami-dusk.jpeg', span:'span 1', alt:'הדמיית הפרויקט בשעות הערב'},
+    {src:'images/miami-plaza.jpeg', span:'span 1', alt:'הדמיית הכניסה והרחבה בפרויקט'},
+    {src:'images/gallery-3.jpg', span:'span 1', alt:'הדמיית חזית הפרויקט'},
+    {src:'images/gallery-1.jpg', span:'span 1', alt:'הדמיית רחוב המסחר בפרויקט'},
+    {src:'images/gallery-5.jpg', span:'span 1', alt:'הדמיית מרפסות עם נוף לים'},
+  ],
+  gallerySeabreeze: [
+    {src:'images/masterplan-sunset.jpg', span:'span 2'},
+    {src:'images/baku-landscape.jpg', span:'span 1'},
+    {src:'images/baku-building.jpg', span:'span 1'},
+    {src:'images/casino-aerial-sunset.jpg', span:'span 1'},
+    {src:'images/casino-entrance.jpg', span:'span 1'},
+    {src:'images/gallery-2.jpg', span:'span 1'},
+  ],
+  galleryBaku: [
+    {src:'images/baku-city-real.jpg', span:'span 2', alt:'קו הרקיע של באקו וטיילת הים הכספי'},
+  ],
+  mediaEyebrow: 'מדיה', mediaTitle: 'רגע, יש גם וידאו', mediaSub: 'צפו בהדמיות ובעדכוני התקדמות הבנייה, מקרוב ומכל זווית.',
+  faqEyebrow: 'שאלות נפוצות', faqTitle: 'שאלתם? ענינו',
+  faqIntro: 'ריכזנו את השאלות שחוזרות אצל רוכשים ישראלים — על הפרויקט, הליווי, ההשכרה והסביבה. לא מצאתם תשובה? נשמח לדבר.',
+  navHome: 'בית',
+  contactEyebrow: 'לתיאום ופרטים', contactTitle: 'לפרטים נוספים על פרויקט מיאמי',
+  contactBody: 'השאירו פרטים ומשרדנו יחזור אליכם עם מידע על הפרויקט והדירות הזמינות.',
+  contactPhoneLabel: 'ליהי · מנהלת המשרד',
+  contactAddress: 'מגדל Big גלילות, בניין A, קומה 29',
+  formName: 'שם מלא *', formPhone: 'טלפון *', formEmail: 'אימייל (לא חובה)', formMessage: 'הודעה (לא חובה)', formSubmit: 'לתיאום שיחה עם מנהלת המשרד',
+  formThanksTitle: 'הפנייה נשלחה', formThanksBody: 'קיבלנו את הפרטים ונחזור אליכם בהקדם. אם חלון הוואטסאפ לא נפתח, ניתן להתקשר ישירות: 052-369-9316.',
+  footerNote: '© Miami Residence · Sea Breeze, Baku. האמור באתר הוא מידע שיווקי בלבד, אינו מהווה הצעה או ייעוץ השקעות, וההדמיות להמחשה בלבד.',
+  aboutImgAlt: 'חלל פנימי בפרויקט', aboutVideoLabel: 'סרטון הפרויקט',
+  amenities: [
+    {label:'חוף פרטי ובריכות', desc:'בפרויקט'},
+    {label:'בתי קפה ומסעדות', desc:'בפרויקט ובמתחם סיבריז'},
+    {label:'לאונג׳ים וחדרי ישיבות', desc:'בפרויקט'},
+    {label:'ספא, חדר כושר, פילאטיס ויוגה', desc:'בפרויקט ובמתחם סיבריז'},
+    {label:'בריכת גלים ובית ספר לגלישה', desc:'במתחם סיבריז'},
+    {label:'קניון מותגי היוקרה', desc:'במתחם סיבריז'},
+  ],
+  stripLabel1: 'האי המלאכותי', stripLabel2: 'Royale Casino', stripLabel3: 'רצועת החוף', stripLabel4: 'Miami Residence',
+  locEyebrow: 'מיקום', locTitle: 'נכס במרכז של סיבריז',
+  locSub: 'מיאמי רזידנס ממוקם בלב רצועת החוף של סיבריז, בקו ראשון לים ובמרחק הליכה מהקזינו ומהאי המלאכותי.',
+  locFacts: [
+    {title:'קו ראשון לים', sub:'גישה ישירה לחוף ולטיילת', icon:'M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0M7 9h10l-1-4H8L7 9z'},
+    {title:'6 דקות הליכה', sub:'מ-Royale Casino', icon:'M13 4v6l4 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z'},
+    {title:'3 דקות הליכה', sub:'מהאי המלאכותי', icon:'M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z'},
+  ],
+  mapAlt: 'מפת התמצאות של מתחם Sea Breeze',
+  mapNote: 'מפת התמצאות להמחשה בלבד. המיקומים מסומנים על גבי הדמיית תוכנית האב של המתחם.',
+  mapPins: [
+    {label:'Miami Residence', left:'64%', top:'62%', bg:'#0E2430', color:'#FFFFFF'},
+    {label:'Royale Casino', left:'20%', top:'40%', bg:'#FFFFFF', color:'#0E2430'},
+    {label:'האי המלאכותי', left:'44%', top:'30%', bg:'#FFFFFF', color:'#0E2430'},
+  ],
+  mapLegend: [
+    {label:'Miami Residence – הפרויקט', bg:'#0E2430'},
+    {label:'Royale Casino – 6 דקות הליכה', bg:'#7A8B95'},
+    {label:'האי המלאכותי – 3 דקות הליכה', bg:'#7A8B95'},
+  ],
+  bakuPoints: [
+    {num:'01', text:'היסטוריה ותרבות: העיר העתיקה, מוזיאונים ומרכזי תרבות'},
+    {num:'02', text:'אדריכלות וחדשנות: קו רקיע מודרני ופרויקטים בינלאומיים'},
+    {num:'03', text:'מלונות ומותגים: מלונות פרימיום ומותגי יוקרה בלב העיר'},
+    {num:'04', text:'אירועים בינלאומיים: COP29 (ועידת האקלים) ופורמולה 1'},
+  ],
+  highlights: [
+    {title:'מעל 25', sub:'טיסות ישירות בשבוע', note:'טיסות מתל אביב לבאקו, כשעתיים וחצי טיסה.', icon:'M2 16l20-8-8 20-2-8-8-2z'},
+    {title:'70 אלף', sub:'ישראלים ביקרו באזרבייג׳ן בשנת 2025', note:'גידול של 139% לעומת 2024.', icon:'M17 20c0-3-3-5-5-5s-5 2-5 5M12 12a3 3 0 100-6 3 3 0 000 6z'},
+    {title:'מעל 30', sub:'שנות קשר בין המדינות', note:'יחסים דיפלומטיים וכלכליים רציפים מאז 1992.', icon:'M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 22l8.8-8.6a5.5 5.5 0 0 0 0-7.8z'},
+    {title:'10%-12%', sub:'תשואה שנתית מוערכת', note:'הערכה בלבד. אינה מהווה הבטחת תשואה או ייעוץ השקעות.', icon:'M3 17l6-6 4 4 8-8M15 7h6v6'},
+    {title:'35%', sub:'עליית ערך שנתית ממוצעת', note:'נתון עבר שנבחן בשנים 2015–2022 בפרויקטים של סיבריז. אין בנתוני עבר הבטחה לתוצאות עתידיות.', icon:'M4 20V10M10 20V4M16 20v-8M22 20H2'},
+  ],
+  numbersEyebrow: 'ישראל ואזרבייג׳ן', numbersTitle: 'מדינות שותפות לדרך', numbersSub: 'טיסות ישירות, תיירות בצמיחה וקשרים חזקים עם ישראל. מיקום בקו ראשון לים וקרבה לקזינו ולאי המלאכותי, עם אפשרות להשכרה באמצעות חברת ניהול מקומית.',
+  videoSlots: [{label:'סיור בפרויקט, יעלה בקרוב', poster:'images/gallery-1.jpg'},{label:'הדמיית אווירית, יעלה בקרוב', poster:'images/baku-landscape.jpg'},{label:'ראיון עם האדריכל, יעלה בקרוב', poster:'images/casino-interior.jpg'}],
+  servicesEyebrow: 'הליווי שלנו', servicesTitle: 'ליווי ישראלי',
+  supportBody: 'תהליך רכישה מסודר ופשוט, בליווי צמוד של משרדנו ומשרד עורכי הדין פירון. התשלומים מועברים לחשבון נאמנות בישראל.',
+  expBody: 'במהלך שלוש השנים האחרונות אנחנו פועלים בשוק הנדל״ן של באקו, עם התמחות ברצועת החוף סיבריז. שיווקנו בהצלחה את Marina Village ומכרנו נכסים למאות רוכשים ישראלים.',
+  services: [
+    {title:'תהליך רכישה מסודר', text:'תהליך פשוט ומסודר, בליווי צמוד של משרדנו מהשיחה הראשונה ועד המסירה.', icon:'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'},
+    {title:'ליווי משפטי', text:'ליווי משרד עורכי הדין פירון להסכם ולרישום הזכויות.', icon:'M12 3v18M5 7h14M7 7l-3 7a3.5 3.5 0 0 0 6 0zM17 7l-3 7a3.5 3.5 0 0 0 6 0z'},
+    {title:'חשבון נאמנות בישראל', text:'התשלומים מועברים לחשבון נאמנות בישראל.', icon:'M3 10h18M3 10l9-6 9 6M5 10v8M19 10v8M9 10v8M15 10v8M3 20h18'},
+    {title:'ניסיון רב בבאקו', text:'שלוש שנים בשוק הנדל״ן של באקו, בהתמחות ברצועת החוף סיבריז. שיווקנו את Marina Village ומכרנו נכסים למאות רוכשים ישראלים.', icon:'M3 11l9-7 9 7M6 10v10h12V10M10 20v-6h4v6'},
+  ],
+  ctaPlansTitle: 'רוצים לראות את הדירות הזמינות?', ctaPlansText: 'לפרטים נוספים על התכניות והדירות הזמינות בפרויקט, פנו למשרדנו.', ctaPlansBtn: 'לתיאום שיחה עם מנהל המשרד',
+  plansBadge: 'תכניות הדירות',
+  plansSizes: [
+    {label:'סטודיו · 40–45 מ״ר'},
+    {label:'סטודיו · 45–50 מ״ר'},
+    {label:'סטודיו · 50–60 מ״ר'},
+    {label:'דירת חדר שינה אחד · 65 מ״ר'},
+  ],
+  ctaTourTitle: 'מתכננים ביקור בבאקו?', ctaTourText: 'נחבר אתכם לנציג מקומי ונתאם סיור באתר הפרויקט ובאזור Sea Breeze.', ctaTourBtn: 'תאמו סיור',
+  tourBadge: 'סיור באתר הפרויקט',
+  tourPoints: [
+    {text:'סיור מודרך במתחם סיבריז ובאתר הפרויקט'},
+    {text:'ליווי נציג דובר עברית לאורך הביקור'},
+    {text:'הצגת הדירות הזמינות והתכניות המעודכנות'},
+  ],
+  barCall: 'התקשרו', barWhatsapp: 'וואטסאפ', barForm: 'השאירו פרטים',
+  faqMore: 'לכל השאלות והתשובות',
+  faqTopics: [
+    {id:'miami', label:'מיאמי רזידנס'},
+    {id:'seabreeze', label:'Sea Breeze'},
+    {id:'baku', label:'באקו'},
+  ],
+  faqsSeabreeze: [
+    {q:'מה זה אזור Sea Breeze?', a:'Sea Breeze הוא אזור החוף החדש והמבוקש ביותר בבאקו. פרויקט פיתוח ענק הכולל מלונות יוקרה, קזינו, אטרקציות ומגורים על קו החוף הראשון.'},
+    {q:'מתי צפוי האזור להיפתח במלואו?', a:'הפיתוח מתקדם בשלבים; חלקים מהתשתית והמתקנים כבר פועלים, וההשלמה המלאה של האזור צפויה בשנים הקרובות.'},
+    {q:'מה מבדל את Sea Breeze משאר אזורי באקו?', a:'מיקום ייחודי על החוף, השקעת ענק ממשלתית ופרטית, ותמהיל ייחודי של תיירות, בילוי ומגורים באזור אחד.'},
+  ],
+  faqsBaku: [
+    {q:'למה להשקיע בבאקו?', a:'באקו היא בירת אזרבייג׳ן ומרכז כלכלי צומח, עם השקעות תשתית בינלאומיות, תיירות גואה ושוק נדל״ן במגמת עלייה.'},
+    {q:'האם זרים יכולים לרכוש נדל״ן בבאקו?', a:'כן, החוק באזרבייג׳ן מאפשר לזרים לרכוש נכסי מגורים ללא מגבלות מיוחדות.'},
+    {q:'איך מגיעים לבאקו?', a:'לבאקו טיסות ישירות ממרבית ערי אירופה והמזרח התיכון, ושדה התעופה הבינלאומי נמצא כ-25 דקות מהעיר.'},
+  ],
+  faqsBase: [
+    {q:'כמה עולה דירה בפרויקט?', a:'מחירי הדירות משתנים בהתאם לגודל, לקומה ולמפרט. השאירו פרטים ונשלח הצעת מחיר מדויקת ומצגת מלאה.'},
+    {q:'האם מלווים אותנו עורכי דין בתהליך הרכישה?', a:'כן, הרכישה מלווה בייעוץ משפטי מקצועי בכל שלב, מתחילת ההתקשרות ועד למסירת הנכס.'},
+    {q:'איך מתנהל תהליך הרכישה?', a:'יצירת קשר וליווי אישי, קבלת מצגת ותנאים, חתימה על הסכם, תשלומים לפי אבני דרך ולבסוף מסירת הנכס.'},
+    {q:'האם ניתן לרכוש נדל״ן באזרבייג׳ן כתושב זר?', a:'כן, רכישת נדל״ן על ידי תושבים זרים אפשרית. נציג הפרויקט ילווה אתכם בכל הפרטים הרלוונטיים למקרה שלכם.'},
+    {q:'מה המרחק בין הפרויקט לחוף הים?', a:'הפרויקט ממוקם בקו ראשון לים באזור Sea Breeze, עם גישה ישירה לחוף.'},
+    {q:'מתי מתבצעת מסירת הדירות?', a:'מועדי המסירה נקבעים לפי לוחות הזמנים של הפרויקט ומועברים לרוכשים בפגישת הייעוץ האישית.'},
+  ],
+};
+
+const EN = {
+  langToggle: 'עב', dir: 'ltr',
+  navAbout: 'About', navAmenities: 'The Project', navMedia: 'Media', navFaq: 'FAQ', navContact: 'Contact',
+  heroEyebrow: 'SEA BREEZE · BAKU', heroTitle: 'Sea Breeze Baku', heroTitleEn: 'Sea Breeze Baku', heroTitleHe: 'The next big thing in real estate', heroScript: 'The luxury project: Miami Residence', heroSub: 'A luxury residential & investment project on the first sea line, at the heart of Baku\u2019s newest coastal district.', heroSubEn: 'LUXURY LIVING · FIRST SEA LINE',
+  heroCta1: 'Call the office manager', heroCta2: 'Schedule a call with the office manager', ctaCallShort: 'Call us', unitsZoom: 'Enlarge the plan',
+  aboutEyebrow: 'The district', aboutTitlePre: 'The', aboutTitleScript: 'Sea Breeze coastline',
+  aboutBody1: 'Sea Breeze is a resort and residential city on the Caspian shore, combining beaches, hotels, restaurants, retail and leisure. Within the district sits Miami Residence, a luxury project on the first sea line, with pools, cafes, boutiques and work spaces.',
+  aboutBody2: '',
+  amenEyebrow: 'Leisure', amenTitle: 'Leisure and lifestyle around the project', amenSub: 'Private beach and pools, cafes and restaurants, shopping, spa and sports facilities. A resort experience that completes Miami Residence\u2019s location at the heart of Sea Breeze.',
+  amenNote: 'The label under each facility states whether it is in the project or in the surrounding Sea Breeze district. Some facilities carry a fee and are not included in the apartment price.',
+  unitsEyebrow: 'Residences', unitsTitle: 'Sample apartment plans in the project',
+  unitsSoon: 'Plan coming soon', unitsSize: 'Size', unitsRooms: 'Rooms', unitsBath: 'Bathrooms', unitsView: 'View',
+  unitTypes: [
+    {id:'unit-s1', name:'Studio', size:'40–45 sqm', rooms:'Studio', baths:'1', view:'Yes', img:'images/plan-studio-40-45.png', hasPlan:true},
+    {id:'unit-s2', name:'Studio', size:'45–50 sqm', rooms:'Studio', baths:'1', view:'Yes', img:'images/plan-studio-45-50.png', hasPlan:true},
+    {id:'unit-s3', name:'Studio', size:'50–60 sqm', rooms:'Studio', baths:'1', view:'Yes', img:'images/plan-studio-50-60.png', hasPlan:true},
+    {id:'unit-1br', name:'One-bedroom apartment', size:'65 sqm', rooms:'1', baths:'1', view:'Yes', img:'images/plan-one-bed-65.png', hasPlan:true},
+  ],
+  casinoEyebrow: 'The Sea Breeze casino', casinoTitle: 'Royale Casino – the largest casino in Europe',
+  casinoBody1: 'A six-minute walk from the project, the largest casino in Europe is taking shape. An international-standard entertainment complex spanning 90,000 sqm, with over 100 gaming tables and 1,500 gaming machines.',
+  casinoBody2: 'The casino is one of the main growth engines of the Sea Breeze coastline: it draws international tourism year-round, strengthening short-term rental demand and property values across the area.',
+  casinoStats: [
+    {id:'c1', value:'90,000 sqm', label:'Casino floor'},
+    {id:'c2', value:'100+', label:'Gaming tables'},
+    {id:'c3', value:'1,500', label:'Gaming machines'},
+    {id:'c4', value:'6 min', label:'Walk from the project'},
+  ],
+  masterplanEyebrow: 'Master Plan', masterplanTitle: 'The project on the map', masterplanImgAlt: 'Sea Breeze Baku master plan',
+  masterplanPins: [
+    {id:'p1', label:'Luxury tower', left:'75%', top:'24%'},
+    {id:'p2', label:'Hotel islands', left:'46%', top:'46%'},
+    {id:'p3', label:'Amusement park & wheel', left:'54%', top:'80%'},
+    {id:'p4', label:'Waterfront villas', left:'8%', top:'46%'},
+    {id:'p5', label:'Residential district', left:'30%', top:'66%'},
+  ],
+  whyEyebrow: 'A unique opportunity', whyTitle: 'Why Sea Breeze Baku',
+  whySub: 'A first sea-line location at the heart of the district becoming Baku\u2019s leading tourism and leisure destination, close to everything this fast-growing city has to offer.',
+  whyItems: [
+    {id:'why-casino', label:'Casino', desc:'A world-class casino resort, a hub of leisure and entertainment.', iconHtml:{__html:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.3" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.3" fill="currentColor" stroke="none"/></svg>'}},
+    {id:'why-hotels', label:'Luxury hotels', desc:'Boutique and international hotel brands along the coastline.', iconHtml:{__html:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 21V7l8-4 8 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 11h.01M15 11h.01M12 11h.01M9 15h.01M15 15h.01"/></svg>'}},
+    {id:'why-restaurants', label:'Restaurants', desc:'Chef-led dining and cafes with open sea views all day long.', iconHtml:{__html:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 2v8a2 2 0 0 0 2 2v10M7 2v20M11 2v10M17 2c-1.7 0-3 2-3 5s1.3 5 3 5v10"/></svg>'}},
+    {id:'why-yield', label:'Real-estate yield', desc:'A growing market with rising demand and strong return potential.', iconHtml:{__html:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>'}},
+  ],
+  bakuEyebrow: 'The capital city of Baku', bakuTitle: 'Luxury and innovation',
+  bakuSlot: 'Drop a real, striking photograph of Baku here (skyline, old city or promenade).',
+  bakuBody: 'Baku, the capital of Azerbaijan, is undergoing rapid urban development with international-scale investment in infrastructure, tourism and real estate. Sea Breeze, the city\u2019s new coastal strip, is becoming its most sought-after residential and leisure destination for locals and foreign investors alike.',
+  bakuImgAlt: 'Aerial view of the project area', bakuVideoLabel: 'Baku video, coming soon',
+  galleryEyebrow: 'Gallery', galleryTitle: 'Miami, Sea Breeze and Baku up close',
+  galleryHint: 'Tap an image to enlarge and browse the gallery.', galleryPrev: 'Previous image', galleryNext: 'Next image', close: 'Close',
+  galleryTopics: [
+    {id:'miami', label:'Miami Residence'},
+    {id:'seabreeze', label:'Sea Breeze'},
+    {id:'baku', label:'Baku'},
+  ],
+  galleryMiami: [
+    {src:'images/miami-sunset.jpeg', span:'span 2', alt:'הדמיית Miami Residence בשעת שקיעה'},
+    {src:'images/miami-dusk.jpeg', span:'span 1', alt:'הדמיית הפרויקט בשעות הערב'},
+    {src:'images/miami-plaza.jpeg', span:'span 1', alt:'הדמיית הכניסה והרחבה בפרויקט'},
+    {src:'images/gallery-3.jpg', span:'span 1', alt:'הדמיית חזית הפרויקט'},
+    {src:'images/gallery-1.jpg', span:'span 1', alt:'הדמיית רחוב המסחר בפרויקט'},
+    {src:'images/gallery-5.jpg', span:'span 1', alt:'הדמיית מרפסות עם נוף לים'},
+  ],
+  gallerySeabreeze: [
+    {src:'images/masterplan-sunset.jpg', span:'span 2'},
+    {src:'images/baku-landscape.jpg', span:'span 1'},
+    {src:'images/baku-building.jpg', span:'span 1'},
+    {src:'images/casino-aerial-sunset.jpg', span:'span 1'},
+    {src:'images/casino-entrance.jpg', span:'span 1'},
+    {src:'images/gallery-2.jpg', span:'span 1'},
+  ],
+  galleryBaku: [
+    {src:'images/baku-city-real.jpg', span:'span 2', alt:'קו הרקיע של באקו וטיילת הים הכספי'},
+  ],
+  mediaEyebrow: 'Media', mediaTitle: 'Wait, there\u2019s video too', mediaSub: 'Watch renders and construction progress updates, up close and from every angle.',
+  faqEyebrow: 'FAQ', faqTitle: 'You asked, we answered',
+  faqIntro: 'The questions Israeli buyers ask most — about the project, our guidance, renting out and the surrounding district. Still unsure? Let\u2019s talk.',
+  navHome: 'Home',
+  contactEyebrow: 'Get in touch', contactTitle: 'More details about Miami Residence',
+  contactBody: 'Leave your details and our project representative will get back to you with a full presentation, yield figures and current availability.',
+  contactPhoneLabel: 'Lihi · Office manager',
+  contactAddress: 'Big Glilot Tower, Building A, Floor 29',
+  formName: 'Full name', formPhone: 'Phone', formEmail: 'Email', formMessage: 'Message (optional)', formSubmit: 'Submit',
+  formThanksTitle: 'Thank you!', formThanksBody: 'We received your details and will be in touch shortly.',
+  footerNote: '© Miami Residence · Sea Breeze, Baku. All rights reserved.',
+  aboutImgAlt: 'Interior lifestyle at the project', aboutVideoLabel: 'PROJECT FILM',
+  amenities: [
+    {mono:'P', label:'Pools & water park', desc:'Leisure pools and a water park for all ages'},
+    {mono:'B', label:'Private beach', desc:'Direct access to the open sea beach'},
+    {mono:'V', label:'Panoramic sea views', desc:'Sea-facing terraces with open views'},
+    {mono:'G', label:'Landscaped gardens', desc:'Walking paths and gardens between buildings'},
+    {mono:'R', label:'Retail & boutiques', desc:'Ground-floor dining and boutique retail'},
+    {mono:'S', label:'24/7 security', desc:'Gated community with round-the-clock guarding'},
+    {mono:'F', label:'Fitness & spa', desc:'Fitness center, spa and indoor pool'},
+    {mono:'C', label:'Concierge', desc:'Personal concierge service for residents'},
+  ],
+  stripLabel1: 'The artificial island', stripLabel2: 'Royale Casino', stripLabel3: 'The coastline', stripLabel4: 'Miami Residence',
+  locEyebrow: 'Location', locTitle: 'A property at the heart of Sea Breeze',
+  locSub: 'Miami Residence sits at the centre of the Sea Breeze coastline, on the first sea line and within walking distance of the casino and the artificial island.',
+  locFacts: [
+    {title:'First sea line', sub:'Direct beach and promenade access', icon:'M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0M7 9h10l-1-4H8L7 9z'},
+    {title:'6-minute walk', sub:'From Royale Casino', icon:'M13 4v6l4 2M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z'},
+    {title:'3-minute walk', sub:'From the artificial island', icon:'M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z'},
+  ],
+  mapAlt: 'Orientation map of the Sea Breeze district',
+  mapNote: 'Illustrative orientation map. Locations are marked on the district master-plan render.',
+  mapPins: [
+    {label:'Miami Residence', left:'64%', top:'62%', bg:'#0E2430', color:'#FFFFFF'},
+    {label:'Royale Casino', left:'20%', top:'40%', bg:'#FFFFFF', color:'#0E2430'},
+    {label:'Artificial island', left:'44%', top:'30%', bg:'#FFFFFF', color:'#0E2430'},
+  ],
+  mapLegend: [
+    {label:'Miami Residence – the project', bg:'#0E2430'},
+    {label:'Royale Casino – 6-minute walk', bg:'#7A8B95'},
+    {label:'Artificial island – 3-minute walk', bg:'#7A8B95'},
+  ],
+  bakuPoints: [
+    {num:'01', text:'International-scale urban and tourism infrastructure'},
+    {num:'02', text:'A new, fast-developing coastal strip in Sea Breeze'},
+    {num:'03', text:'Proximity to marinas, parks and other luxury projects'},
+    {num:'04', text:'A growing destination for foreign buyers and investors'},
+  ],
+  highlights: [
+    {title:'25+', sub:'direct flights per week', note:'Tel Aviv to Baku in about two and a half hours.', icon:'M2 16l20-8-8 20-2-8-8-2z'},
+    {title:'70K', sub:'Israelis visited Azerbaijan in 2025', note:'A 139% increase over 2024.', icon:'M17 20c0-3-3-5-5-5s-5 2-5 5M12 12a3 3 0 100-6 3 3 0 000 6z'},
+    {title:'30+', sub:'years of relations between the countries', note:'Continuous diplomatic and economic ties since 1992.', icon:'M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.6l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 22l8.8-8.6a5.5 5.5 0 0 0 0-7.8z'},
+    {title:'10%-12%', sub:'Estimated annual yield', note:'An estimate only. Not a guaranteed return or investment advice.', icon:'M3 17l6-6 4 4 8-8M15 7h6v6'},
+    {title:'35%', sub:'Average annual value growth', note:'Historical figure reviewed for 2015–2022 across Sea Breeze projects. Past performance is no guarantee of future results.', icon:'M4 20V10M10 20V4M16 20v-8M22 20H2'},
+  ],
+  numbersEyebrow: 'Israel & Azerbaijan', numbersTitle: 'Two countries, one path', numbersSub: 'A quick snapshot of the project, in scale and in numbers.',
+  videoSlots: [{label:'Project walkthrough, coming soon', poster:'images/gallery-1.jpg'},{label:'Aerial render, coming soon', poster:'images/baku-landscape.jpg'},{label:'Architect interview, coming soon', poster:'images/casino-interior.jpg'}],
+  servicesEyebrow: 'Our service', servicesTitle: 'Israeli guidance',
+  supportBody: 'An orderly, straightforward purchase process, guided closely by our office and the Firon law firm. Payments are transferred to a trust account in Israel.',
+  expBody: 'For the past three years we have operated in the Baku real-estate market, specialising in the Sea Breeze coastline. We successfully marketed Marina Village and sold properties to hundreds of Israeli buyers.',
+  services: [
+    {title:'Pre-purchase consulting', text:'A walk-through of unit types, floors, orientation and pricing, no commitment.', icon:'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z'},
+    {title:'Legal support', text:'Local and Israeli lawyers handle the agreement and title registration.', icon:'M12 3v18M5 7h14M7 7l-3 7a3.5 3.5 0 0 0 6 0zM17 7l-3 7a3.5 3.5 0 0 0 6 0z'},
+    {title:'Payments & transfers', text:'Full guidance through the international payment process with the banks.', icon:'M3 10h18M3 10l9-6 9 6M5 10v8M19 10v8M9 10v8M15 10v8M3 20h18'},
+    {title:'Rental management', text:'For investors: local management companies for short or long-term rentals.', icon:'M3 11l9-7 9 7M6 10v10h12V10M10 20v-6h4v6'},
+  ],
+  ctaPlansTitle: 'Want the full floor plans?', ctaPlansText: 'We\u2019ll send drawings, areas and an up-to-date price list for every unit type.', ctaPlansBtn: 'Send me a price list',
+  plansBadge: 'Apartment plans',
+  plansSizes: [
+    {label:'Studio · 40–45 sqm'},
+    {label:'Studio · 45–50 sqm'},
+    {label:'Studio · 50–60 sqm'},
+    {label:'One-bedroom · 65 sqm'},
+  ],
+  ctaTourTitle: 'Planning a visit to Baku?', ctaTourText: 'We\u2019ll connect you with a local representative and arrange a site tour of Sea Breeze.', ctaTourBtn: 'Book a tour',
+  tourBadge: 'Project site tour',
+  tourPoints: [
+    {text:'A guided tour of Sea Breeze and the project site'},
+    {text:'A Hebrew-speaking representative throughout the visit'},
+    {text:'A walk-through of available apartments and current plans'},
+  ],
+  barCall: 'Call', barWhatsapp: 'WhatsApp', barForm: 'Contact',
+  faqMore: 'See all questions & answers',
+  faqTopics: [
+    {id:'miami', label:'Miami Residence'},
+    {id:'seabreeze', label:'Sea Breeze'},
+    {id:'baku', label:'Baku'},
+  ],
+  faqsSeabreeze: [
+    {q:'What is the Sea Breeze district?', a:'Sea Breeze is Baku\u2019s newest and most sought-after coastal district. A massive development including luxury hotels, a casino, attractions and first-line residences.'},
+    {q:'When will the district be fully complete?', a:'Development is progressing in phases; parts of the infrastructure and facilities are already operating, with full completion expected in the coming years.'},
+    {q:'What sets Sea Breeze apart from other Baku districts?', a:'A unique seafront location, massive public and private investment, and a rare mix of tourism, leisure and residential living in one area.'},
+  ],
+  faqsBaku: [
+    {q:'Why invest in Baku?', a:'Baku is the capital of Azerbaijan and a growing economic hub, with international infrastructure investment, surging tourism and a rising real-estate market.'},
+    {q:'Can foreigners buy real estate in Baku?', a:'Yes, Azerbaijani law allows foreigners to purchase residential property without special restrictions.'},
+    {q:'How do you get to Baku?', a:'Baku has direct flights from most European and Middle Eastern cities, with the international airport about 25 minutes from the city.'},
+  ],
+  faqsBase: [
+    {q:'How much does an apartment cost?', a:'Prices vary by size, floor and finish. Leave your details and we\u2019ll send an accurate quote and full presentation.'},
+    {q:'Are we accompanied by lawyers during the purchase?', a:'Yes, the purchase is accompanied by professional legal counsel at every stage, from initial agreement to handover.'},
+    {q:'What does the purchase process look like?', a:'Initial contact and personal guidance, presentation and terms, signing the agreement, milestone payments, and finally handover.'},
+    {q:'Can foreign residents buy real estate in Azerbaijan?', a:'Yes, foreign nationals can purchase real estate. Our representative will guide you through the details relevant to your case.'},
+    {q:'How far is the project from the beach?', a:'The project sits on the first sea line in Sea Breeze, with direct beach access.'},
+    {q:'When will apartments be handed over?', a:'Handover dates follow the project timeline and are shared with buyers during the personal consultation.'},
+  ],
+};
+
+class Component extends DCLogic {
+  state = { lang: 'he', openFaqIndex: 0, activeFaqTopic: 0, activeGalleryTopic: 0, formSubmitted: false, scrolled: false, isMobile: false, mobileMenuOpen: false };
+  syncDir() {
+    const d = this.state.lang === 'en' ? 'ltr' : 'rtl';
+    if (document.documentElement.getAttribute('dir') !== d) document.documentElement.setAttribute('dir', d);
+    if (document.body.getAttribute('dir') !== d) document.body.setAttribute('dir', d);
+  }
+  componentDidUpdate() { this.syncDir(); }
+  componentDidMount() {
+    this.syncDir();
+    if (this.props.defaultLang === 'en') this.setState({ lang: 'en' });
+    this.checkMobile = () => this.setState({ isMobile: window.innerWidth < 900 });
+    this.checkMobile();
+    window.addEventListener('resize', this.checkMobile);
+    this.onScroll = () => {
+      const scrolled = window.scrollY > 40;
+      if (scrolled !== this.state.scrolled) this.setState({ scrolled });
+    };
+    window.addEventListener('scroll', this.onScroll);
+    const show = (el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      el.setAttribute('data-reveal-done', '1');
+    };
+    this.sweepReveal = () => {
+      const vh = window.innerHeight;
+      document.querySelectorAll('[data-reveal]:not([data-reveal-done])').forEach(el => {
+        if (el.getBoundingClientRect().top < vh * 0.9) show(el);
+      });
+    };
+    this.armReveal = () => {
+      document.querySelectorAll('[data-reveal]:not([data-reveal-armed])').forEach(el => {
+        el.setAttribute('data-reveal-armed', '1');
+        el.style.transition = 'opacity 0.9s cubic-bezier(.16,.84,.44,1), transform 0.9s cubic-bezier(.16,.84,.44,1)';
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.9) { show(el); return; }
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(26px)';
+      });
+      this.sweepReveal();
+    };
+    this.sweepWords = () => {
+      const vh = window.innerHeight;
+      document.querySelectorAll('[data-scrollpara]').forEach(p => {
+        const words = p.querySelectorAll('[data-scrollword]');
+        if (!words.length) return;
+        const r = p.getBoundingClientRect();
+        const start = vh * 0.9, end = vh * 0.28;
+        let prog = (start - r.top) / (start - end);
+        prog = Math.max(0, Math.min(1, prog));
+        const n = words.length;
+        const head = prog * (n + 6) - 3;
+        words.forEach((w, i) => {
+          let o = (head - i) / 4;
+          o = 0.14 + 0.86 * Math.max(0, Math.min(1, o));
+          const v = o.toFixed(2);
+          if (w.dataset.o !== v) { w.dataset.o = v; w.style.opacity = v; }
+        });
+      });
+    };
+    this.armReveal();
+    this.sweepWords();
+    this.revealScroll = () => { this.sweepReveal(); this.sweepWords(); };
+    window.addEventListener('scroll', this.revealScroll, { passive: true });
+    window.addEventListener('resize', this.revealScroll);
+    this.revealMutationObserver = new MutationObserver(() => { this.armReveal(); this.sweepWords(); });
+    this.revealMutationObserver.observe(document.body, { childList: true, subtree: true });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.revealScroll) {
+      window.removeEventListener('scroll', this.revealScroll);
+      window.removeEventListener('resize', this.revealScroll);
+    }
+    if (this.revealMutationObserver) this.revealMutationObserver.disconnect();
+  }
+
+  toggleLang = () => this.setState(s => ({ lang: s.lang === 'he' ? 'en' : 'he' }));
+  toggleMobileMenu = () => this.setState(s => ({ mobileMenuOpen: !s.mobileMenuOpen }));
+  toggleFaq = (i) => this.setState(s => ({ openFaqIndex: s.openFaqIndex === i ? -1 : i }));
+  selectFaqTopic = (i) => this.setState({ activeFaqTopic: i, openFaqIndex: 0 });
+  selectGalleryTopic = (i) => this.setState({ activeGalleryTopic: i });
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const f = e.target;
+    const get = (n) => (f.elements[n] && f.elements[n].value ? f.elements[n].value.trim() : '');
+    const he = this.state.lang === 'he';
+    const lines = [
+      he ? 'פנייה מאתר Miami Residence' : 'Enquiry from the Miami Residence site',
+      (he ? 'שם: ' : 'Name: ') + get('name'),
+      (he ? 'טלפון: ' : 'Phone: ') + get('phone'),
+    ];
+    if (get('email')) lines.push((he ? 'אימייל: ' : 'Email: ') + get('email'));
+    if (get('message')) lines.push((he ? 'הודעה: ' : 'Message: ') + get('message'));
+    const url = 'https://wa.me/972523699316?text=' + encodeURIComponent(lines.join('\n'));
+    try { const w = window.open(url, '_blank'); if (!w) window.location.href = url; } catch (err) { window.location.href = url; }
+    this.setState({ formSubmitted: true });
+  };
+
+  renderVals() {
+    const base = this.state.lang === 'he' ? HE : EN;
+    const faqLists = [base.faqsBase, base.faqsSeabreeze, base.faqsBaku];
+    const activeList = (faqLists[this.state.activeFaqTopic] || base.faqsBase).slice(0, 4);
+    const faqs = activeList.map((f, i) => {
+      const open = this.state.openFaqIndex === i;
+      return {
+        q: f.q, a: f.a, open,
+        sign: open ? '\u2212' : '+',
+        cardBg: open ? '#FBF9F5' : '#FFFFFF',
+        accent: open ? '#0E2430' : 'rgba(14,36,48,0.18)',
+        signBg: open ? '#0E2430' : 'rgba(14,36,48,0.08)',
+        signColor: open ? '#FFFFFF' : '#0E2430',
+        toggle: () => this.toggleFaq(i),
+      };
+    });
+    const faqTopics = base.faqTopics.map((tp, i) => ({
+      id: tp.id, label: tp.label,
+      select: () => this.selectFaqTopic(i),
+      bg: this.state.activeFaqTopic === i ? '#0E2430' : 'transparent',
+      color: this.state.activeFaqTopic === i ? '#FFFFFF' : '#31403F',
+      border: this.state.activeFaqTopic === i ? 'transparent' : 'rgba(14,36,48,0.3)',
+    }));
+    const galleryLists = [base.galleryMiami, base.gallerySeabreeze, base.galleryBaku];
+    const rawGallery = galleryLists[this.state.activeGalleryTopic] || base.galleryMiami;
+    const galleryImages = rawGallery.map((g, i) => ({
+      src: g.src, alt: g.alt || base.galleryTitle, span: g.span,
+      open: () => this.setState({ lightboxIndex: i }),
+    }));
+    const galleryTopics = base.galleryTopics.map((tp, i) => {
+      const on = this.state.activeGalleryTopic === i;
+      return {
+        id: tp.id, label: tp.label,
+        count: (galleryLists[i] || []).length,
+        select: () => this.setState({ activeGalleryTopic: i, lightboxIndex: -1 }),
+        bg: on ? '#0E2430' : '#FFFFFF',
+        color: on ? '#FFFFFF' : '#31403F',
+        border: on ? '#0E2430' : 'rgba(14,36,48,0.28)',
+        shadow: on ? '0 10px 26px rgba(14,36,48,0.28)' : 'none',
+        badgeBg: on ? 'rgba(255,255,255,0.22)' : 'rgba(14,36,48,0.1)',
+        badgeColor: on ? '#FFFFFF' : '#0E2430',
+      };
+    });
+    const lbIndex = this.state.lightboxIndex ?? -1;
+    const lbItem = lbIndex >= 0 ? rawGallery[lbIndex] : null;
+    const scrolled = this.state.scrolled;
+    return {
+      navBg: scrolled ? 'linear-gradient(180deg,rgba(14,36,48,0.95),rgba(10,36,48,0.9))' : 'transparent',
+      navBlur: scrolled ? 'blur(14px)' : 'none',
+      navBorder: scrolled ? 'rgba(217,167,163,0.18)' : 'transparent',
+      navShadow: scrolled ? '0 8px 30px rgba(0,0,0,0.25)' : 'none',
+      dir: base.dir,
+      t: base,
+      amenities: base.amenities,
+      whyItems: base.whyItems,
+      unitTypes: base.unitTypes,
+      dataReady: true,
+      casinoStats: base.casinoStats,
+      masterplanPins: base.masterplanPins,
+      bakuPoints: base.bakuPoints,
+      aboutWords1: String(base.aboutBody1 || '').split(/\s+/).filter(Boolean).map(w => ({text: w})),
+      aboutWords2: String(base.aboutBody2 || '').split(/\s+/).filter(Boolean).map(w => ({text: w})),
+      highlights: base.highlights.map(h => ({...h, hasNote: !!h.note})),
+      locFacts: base.locFacts,
+      mapPins: base.mapPins,
+      mapLegend: base.mapLegend,
+      pinFont: this.state.isMobile ? '9px' : 'clamp(11px,1.05vw,13px)',
+      pinPad: this.state.isMobile ? '4px 7px' : '7px 13px',
+      pinStem: this.state.isMobile ? '10px' : '22px',
+      pinDot: this.state.isMobile ? '8px' : '13px',
+      legendInset: this.state.isMobile ? '8px' : '14px',
+      legendGap: this.state.isMobile ? '4px' : '7px',
+      legendPad: this.state.isMobile ? '7px 9px' : '12px 14px',
+      legendDot: this.state.isMobile ? '6px' : '10px',
+      legendFont: this.state.isMobile ? '9.5px' : '12.5px',
+      bakuCols: this.state.isMobile ? '1fr' : 'minmax(0,0.86fr) minmax(0,1.14fr)',
+      unitCols: this.state.isMobile ? 'repeat(2,minmax(0,1fr))' : 'repeat(4,minmax(0,1fr))',
+      faqCols: this.state.isMobile ? '1fr' : 'minmax(0,0.85fr) minmax(0,1.15fr)',
+      faqStick: this.state.isMobile ? 'static' : 'sticky',
+      startAlign: base.dir === 'rtl' ? 'right' : 'left',
+      bodyAlign: this.state.isMobile ? 'center' : (base.dir === 'rtl' ? 'right' : 'left'),
+      services: base.services.map((sv, i) => ({...sv, num: '0' + (i + 1)})),
+      servicesCols: this.state.isMobile ? 'repeat(1,minmax(0,1fr))' : 'repeat(4,minmax(0,1fr))',
+      stepsGap: this.state.isMobile ? '28px' : 'clamp(20px,2.6vw,36px)',
+      stepsLinePos: this.state.isMobile ? 'display:none' : 'top:36px;inset-inline:36px;height:1px',
+      stepsAlign: this.state.isMobile ? 'center' : 'flex-start',
+      stepsText: this.state.isMobile ? 'center' : (base.dir === 'rtl' ? 'right' : 'left'),
+      stepsPadStart: '0',
+      stickyPad: this.state.isMobile ? '58px' : '0px',
+      videoSlots: base.videoSlots.map(v => ({...v, bgStyle: {position:'absolute', inset:0, backgroundImage:'url('+v.poster+')', backgroundSize:'cover', backgroundPosition:'center'}})),
+      faqs, faqTopics,
+      locCols: this.state.isMobile ? '1fr' : 'minmax(0,0.9fr) minmax(0,1.1fr)',
+      tourCols: this.state.isMobile ? '1fr' : 'minmax(0,1.15fr) minmax(0,0.85fr)',
+      tourPoints: base.tourPoints,
+      plansSizes: base.plansSizes,
+      amenCols: this.state.isMobile ? 'repeat(2,minmax(0,1fr))' : 'repeat(6,minmax(0,1fr))',
+      highlightsCols: this.state.isMobile ? 'repeat(2,minmax(0,1fr))' : 'repeat(5,minmax(0,1fr))',
+      casinoCols: this.state.isMobile ? '1fr' : 'minmax(0,0.95fr) minmax(0,1.05fr)',
+      galleryImages, galleryTopics,
+      galleryCols: this.state.isMobile ? 'repeat(2,minmax(0,1fr))' : 'repeat(auto-fit,minmax(240px,1fr))',
+      galleryRowH: this.state.isMobile ? '150px' : '220px',
+      lightboxOpen: !!lbItem,
+      lightboxSrc: lbItem ? lbItem.src : '',
+      lightboxAlt: lbItem ? (lbItem.alt || '') : '',
+      lightboxCounter: lbItem ? (lbIndex + 1) + ' / ' + rawGallery.length : '',
+      closeLightbox: () => this.setState({ lightboxIndex: -1 }),
+      prevLightbox: () => this.setState(st => ({ lightboxIndex: (st.lightboxIndex - 1 + rawGallery.length) % rawGallery.length })),
+      nextLightbox: () => this.setState(st => ({ lightboxIndex: (st.lightboxIndex + 1) % rawGallery.length })),
+      showVideo: this.props.showVideoPlaceholder ?? false,
+      toggleLang: this.toggleLang,
+      isMobile: this.state.isMobile,
+      contactAlign: this.state.isMobile ? 'center' : 'stretch',
+      contactJustify: this.state.isMobile ? 'center' : 'flex-start',
+      contactText: this.state.isMobile ? 'center' : 'start',
+      heroH: this.state.isMobile ? '74vh' : '100vh',
+      heroPadTop: this.state.isMobile ? '104px' : 'clamp(90px,22vw,120px)',
+      heroPadBottom: this.state.isMobile ? '44px' : '60px',
+      stripTint: 0,
+      bakuAlign: this.state.isMobile ? 'center' : 'start',
+      bakuItems: this.state.isMobile ? 'center' : 'stretch',
+      bakuJustify: this.state.isMobile ? 'center' : 'flex-start',
+      bakuRule: this.state.isMobile ? 'none' : 'block',
+      stripW: '100%',
+      stripML: '0',
+      stripBasis: this.state.isMobile ? '50%' : '25%',
+      stripLabelFont: this.state.isMobile ? '12px' : 'clamp(13px,1.05vw,16px)',
+      stripLabelPad: this.state.isMobile ? '7px 11px' : '9px 16px',
+      stripH: this.state.isMobile ? '44vw' : 'clamp(320px,26vw,420px)',
+      stripShift: '0',
+      stripClip: 'none',
+      titleWrap: this.state.isMobile ? 'normal' : 'nowrap',
+      isDesktopNav: !this.state.isMobile,
+      mobileMenuOpen: this.state.mobileMenuOpen,
+      toggleMobileMenu: this.toggleMobileMenu,
+      handleSubmit: this.handleSubmit,
+      formSubmitted: this.state.formSubmitted,
+      formNotSubmitted: !this.state.formSubmitted,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
