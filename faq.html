@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#7C3F43"/><text x="100" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="52" fill="#F3ECE7" letter-spacing="4">MR</text></svg></template>
+
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+  <style>
+    @font-face { font-family: 'FUP Golan'; src: url('fonts/FUP-Golan-Light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
+    @font-face { font-family: 'FUP Golan'; src: url('fonts/FUP-Golan-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+    @font-face { font-family: 'FUP Golan'; src: url('fonts/FUP-Golan-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+    @font-face { font-family: 'FUP Golan'; src: url('fonts/FUP-Golan-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+    @font-face { font-family: 'FUP Golan'; src: url('fonts/FUP-Golan-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; }
+    * { box-sizing: border-box; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: #B5676B; }
+  </style>
+</helmet>
+<div dir="rtl" style="font-family:'FUP Golan',sans-serif;background:#FAFAFA;color:#141414;overflow-x:hidden;width:100%;">
+
+  <div style="position:absolute;top:0;left:0;right:0;z-index:100;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding:18px 5%;">
+    <a href="index.html" style="display:flex;align-items:center;"><img src="images/logo-horizontal-white.png" alt="Miami Residence" style="height:15px;width:auto;object-fit:contain;display:block;filter:drop-shadow(0 2px 10px rgba(0,0,0,0.4));" /></a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center;">
+      <a href="index.html" style="color:#FFFFFF;font-size:14px;letter-spacing:0.06em;padding:10px 4px;">בית</a>
+      <a href="about.html" style="color:#FFFFFF;font-size:14px;letter-spacing:0.06em;padding:10px 4px;">אודות</a>
+      <a href="media.html" style="color:#FFFFFF;font-size:14px;letter-spacing:0.06em;padding:10px 4px;">מדיה</a>
+      <a href="faq.html" style="color:#E9C0BC;font-size:14px;letter-spacing:0.06em;padding:10px 4px;">שאלות ותשובות</a>
+      <a href="contact.html" style="background:#7C3F43;color:#FFFFFF;font-size:14px;font-weight:700;letter-spacing:0.03em;padding:12px 26px;border-radius:24px;">צור קשר</a>
+    </div>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button onclick="{{ toggleMenu }}" style="background:transparent;border:none;padding:8px;cursor:pointer;display:flex;flex-direction:column;gap:5px;">
+        <span style="width:24px;height:2px;background:#FFFFFF;display:block;"></span>
+        <span style="width:24px;height:2px;background:#FFFFFF;display:block;"></span>
+        <span style="width:24px;height:2px;background:#FFFFFF;display:block;"></span>
+      </button>
+    </sc-if>
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="position:fixed;inset:0;z-index:200;background:linear-gradient(180deg,#1B1315 0%,#0B0809 100%);display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 6%;border-bottom:1px solid rgba(255,255,255,0.1);">
+          <a href="index.html" style="display:flex;align-items:center;"><img src="images/logo-horizontal-white.png" alt="Miami Residence" style="height:15px;width:auto;object-fit:contain;display:block;" /></a>
+          <button onclick="{{ toggleMenu }}" aria-label="סגור תפריט" style="width:38px;height:38px;border-radius:50%;background:transparent;border:1px solid rgba(255,255,255,0.24);color:#FFFFFF;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;">×</button>
+        </div>
+        <nav style="display:flex;flex-direction:column;padding:14px 6% 0;">
+          <a href="index.html" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 2px;border-bottom:1px solid rgba(255,255,255,0.09);color:#FFFFFF;font-size:23px;font-weight:500;letter-spacing:0.01em;" style-hover="color:#E9C0BC;"><span>בית</span><span style="font-size:11px;letter-spacing:0.18em;color:rgba(233,192,188,0.45);">01</span></a>
+          <a href="about.html" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 2px;border-bottom:1px solid rgba(255,255,255,0.09);color:#FFFFFF;font-size:23px;font-weight:500;letter-spacing:0.01em;" style-hover="color:#E9C0BC;"><span>אודות</span><span style="font-size:11px;letter-spacing:0.18em;color:rgba(233,192,188,0.45);">02</span></a>
+          <a href="media.html" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 2px;border-bottom:1px solid rgba(255,255,255,0.09);color:#FFFFFF;font-size:23px;font-weight:500;letter-spacing:0.01em;" style-hover="color:#E9C0BC;"><span>מדיה</span><span style="font-size:11px;letter-spacing:0.18em;color:rgba(233,192,188,0.45);">03</span></a>
+          <a href="faq.html" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 2px;border-bottom:1px solid rgba(255,255,255,0.09);color:#FFFFFF;font-size:23px;font-weight:500;letter-spacing:0.01em;" style-hover="color:#E9C0BC;"><span>שאלות ותשובות</span><span style="font-size:11px;letter-spacing:0.18em;color:rgba(233,192,188,0.45);">04</span></a>
+          <a href="contact.html" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 2px;border-bottom:1px solid rgba(255,255,255,0.09);color:#FFFFFF;font-size:23px;font-weight:500;letter-spacing:0.01em;" style-hover="color:#E9C0BC;"><span>צור קשר</span><span style="font-size:11px;letter-spacing:0.18em;color:rgba(233,192,188,0.45);">05</span></a>
+        </nav>
+        <div style="margin-top:auto;display:flex;flex-direction:column;gap:14px;padding:26px 6% calc(26px + env(safe-area-inset-bottom));">
+          <a href="https://wa.me/972508284019" style="background:#7C3F43;color:#FFFFFF;display:flex;align-items:center;justify-content:center;gap:10px;font-size:16px;font-weight:700;letter-spacing:0.02em;padding:16px;border-radius:32px;"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.4L3 21l2.2-5.5A8.4 8.4 0 1 1 21 11.5z"/></svg><span>שלחו הודעה בוואטסאפ</span></a>
+          <a href="tel:0508284019" style="text-align:center;color:rgba(255,255,255,0.6);font-size:13.5px;letter-spacing:0.1em;">050-828-4019</a>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="position:relative;isolation:isolate;min-height:clamp(400px,58vh,580px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(110px,20vw,150px) 6% clamp(56px,9vw,84px);overflow:hidden;">
+    <img src="images/baku-building.jpg" alt="באקו" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;" />
+    <div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(14,11,12,0.62),rgba(14,11,12,0.72));"></div>
+    <div style="position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(165,100,102,0.3),rgba(110,60,64,0.34));mix-blend-mode:multiply;"></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:18px;">
+      <div style="width:6px;height:6px;transform:rotate(45deg);background:#E9C0BC;"></div>
+      <div style="width:46px;height:1px;background:rgba(233,192,188,0.6);"></div>
+      <div style="color:#E9C0BC;letter-spacing:0.3em;font-size:12.5px;">שאלות נפוצות</div>
+      <div style="width:46px;height:1px;background:rgba(233,192,188,0.6);"></div>
+      <div style="width:6px;height:6px;transform:rotate(45deg);background:#E9C0BC;"></div>
+    </div>
+    <h1 style="font-family:'FUP Golan',sans-serif;font-weight:500;font-size:clamp(32px,5.4vw,60px);line-height:1.12;color:#FFFFFF;margin:0;text-wrap:balance;">כל מה שרציתם לדעת</h1>
+    <div style="font-family:'Parisienne',cursive;font-size:clamp(32px,4vw,48px);line-height:1.1;color:#E9C0BC;margin:8px 0 20px;">Miami Residence</div>
+    <p style="font-size:clamp(15px,1.6vw,18px);line-height:1.85;color:rgba(255,255,255,0.88);margin:0 auto;max-width:56ch;text-wrap:pretty;">תהליך הרכישה, תנאי התשלום, האזור והעיר: התשובות לשאלות שהכי חוזרות אצלנו.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:32px;">
+      <a href="#faq" style="background:#7C3F43;color:#FFFFFF;padding:15px 34px;font-size:14.5px;font-weight:700;letter-spacing:0.04em;border-radius:26px;box-shadow:0 12px 30px rgba(0,0,0,0.3);">לשאלות</a>
+      <a href="contact.html" style="border:1px solid rgba(255,255,255,0.7);color:#FFFFFF;padding:15px 34px;font-size:14.5px;letter-spacing:0.04em;border-radius:26px;transition:background 0.3s ease;" style-hover="background:rgba(255,255,255,0.14);">דברו איתנו</a>
+    </div>
+  </div>
+
+  <div id="faq" style="background:#FFFFFF;padding:clamp(56px,10vw,110px) 6%;">
+    <div style="text-align:center;max-width:760px;margin:0 auto 34px;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px;">
+        <div style="width:38px;height:1px;background:rgba(140,74,78,0.5);"></div>
+        <div style="color:#8C4A4E;letter-spacing:0.3em;font-size:12px;">שאלתם, ענינו</div>
+        <div style="width:38px;height:1px;background:rgba(140,74,78,0.5);"></div>
+      </div>
+      <h2 style="font-family:'FUP Golan',sans-serif;font-weight:500;font-size:clamp(28px,3.8vw,46px);color:#141414;margin:0 0 14px;text-wrap:balance;">בחרו נושא</h2>
+      <p style="color:#6B6058;font-size:15.5px;line-height:1.8;margin:0;">הפרויקט, אזור Sea Breeze והעיר באקו.</p>
+    </div>
+    <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:36px;">
+      <sc-for list="{{ topics }}" as="tp" hint-placeholder-count="3">
+        <button onclick="{{ tp.select }}" style="background:{{ tp.bg }};color:{{ tp.color }};border:1px solid {{ tp.border }};font-family:'FUP Golan',sans-serif;font-size:14px;font-weight:600;padding:12px 26px;border-radius:22px;cursor:pointer;min-height:44px;transition:background 0.3s ease,color 0.3s ease;">{{ tp.label }}</button>
+      </sc-for>
+    </div>
+    <div style="max-width:860px;margin:0 auto;display:flex;flex-direction:column;border-top:1px solid rgba(20,20,20,0.1);">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+        <div style="border-bottom:1px solid rgba(20,20,20,0.1);">
+          <div onclick="{{ f.toggle }}" style="display:flex;align-items:center;justify-content:space-between;padding:22px 4px;cursor:pointer;gap:20px;min-height:44px;">
+            <div style="font-size:17px;font-weight:500;color:#141414;text-wrap:pretty;">{{ f.q }}</div>
+            <div style="width:30px;height:30px;border-radius:50%;background:{{ f.signBg }};color:{{ f.signColor }};display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;transition:background 0.3s ease;">{{ f.sign }}</div>
+          </div>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 4px 26px;font-size:15.5px;line-height:1.9;color:#4A4345;max-width:70ch;text-wrap:pretty;">{{ f.a }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background:#F3ECE7;border-top:1px solid rgba(20,20,20,0.08);padding:clamp(48px,8vw,84px) 6%;text-align:center;">
+    <h2 style="font-family:'FUP Golan',sans-serif;font-weight:500;font-size:clamp(24px,3.2vw,40px);color:#141414;margin:0 0 14px;text-wrap:balance;">לא מצאתם תשובה?</h2>
+    <p style="color:#4A4345;font-size:15.5px;line-height:1.8;margin:0 auto 28px;max-width:52ch;">השאירו פרטים ונציג הפרויקט יחזור אליכם עם כל המידע.</p>
+    <a href="contact.html" style="display:inline-block;background:#7C3F43;color:#FFFFFF;padding:15px 36px;font-size:14.5px;font-weight:700;letter-spacing:0.04em;border-radius:26px;">דברו איתנו</a>
+  </div>
+
+  <div style="background:#0A0A0A;padding:50px 6% 34px;display:flex;flex-direction:column;align-items:center;gap:22px;border-top:1px solid rgba(181,103,107,0.2);">
+    <img src="images/logo-cropped.png" alt="Miami Residence" style="height:30px;width:auto;object-fit:contain;display:block;" />
+    <div style="display:flex;gap:8px 24px;flex-wrap:wrap;justify-content:center;">
+      <a href="index.html" style="color:#9C8688;font-size:13px;padding:8px 4px;">בית</a>
+      <a href="about.html" style="color:#9C8688;font-size:13px;padding:8px 4px;">אודות</a>
+      <a href="media.html" style="color:#9C8688;font-size:13px;padding:8px 4px;">מדיה</a>
+      <a href="faq.html" style="color:#9C8688;font-size:13px;padding:8px 4px;">שאלות ותשובות</a>
+      <a href="contact.html" style="color:#9C8688;font-size:13px;padding:8px 4px;">צור קשר</a>
+    </div>
+    <div style="font-size:12px;color:#5E574C;">© מיאמי רזידנס · Sea Breeze, Baku. כל הזכויות שמורות.</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const LISTS = [
+  [
+    {q:'כמה עולה דירה בפרויקט?', a:'מחירי הדירות משתנים בהתאם לגודל, לקומה ולמפרט. השאירו פרטים ונשלח הצעת מחיר מדויקת ומצגת מלאה.'},
+    {q:'האם מלווים אותנו עורכי דין בתהליך הרכישה?', a:'כן, הרכישה מלווה בייעוץ משפטי מקצועי בכל שלב, מתחילת ההתקשרות ועד למסירת הנכס.'},
+    {q:'איך מתנהל תהליך הרכישה?', a:'יצירת קשר וליווי אישי, קבלת מצגת ותנאים, חתימה על הסכם, תשלומים לפי אבני דרך ולבסוף מסירת הנכס.'},
+    {q:'מה תנאי התשלום?', a:'30% מקדמה בעת החתימה, 55% לפי התקדמות הפרויקט (שלד, מערכות, גמר) ו-15% בעת קבלת המפתח.'},
+    {q:'מה המרחק בין הפרויקט לחוף הים?', a:'הפרויקט ממוקם בקו ראשון לים באזור Sea Breeze, עם גישה ישירה לחוף.'},
+    {q:'מתי מתבצעת מסירת הדירות?', a:'מועדי המסירה נקבעים לפי לוחות הזמנים של הפרויקט ומועברים לרוכשים בפגישת הייעוץ האישית.'},
+    {q:'אילו סוגי דירות יש בפרויקט?', a:'הפרויקט כולל מגוון טיפוסים, מדירות סטודיו ועד דירות משפחתיות גדולות, חלקן עם מרפסות פנורמיות ונוף פתוח לים.'},
+    {q:'מה כלול במפרט הדירה?', a:'מפרט מלא הכולל מטבח מאובזר, מיזוג, ריצוף וכלים סניטריים באיכות גבוהה. המפרט המדויק נמסר יחד עם הצעת המחיר.'},
+    {q:'מה כולל שטח הפרויקט מעבר לדירות?', a:'בריכות ופארק מים, חוף פרטי, חדר כושר, ספא, לובי מאויש, קונסיירז׳, חניה ושטחי מסחר בתוך המתחם.'},
+    {q:'האם יש דמי ניהול ותחזוקה?', a:'כן, דמי ניהול חודשיים המכסים את אחזקת השטחים המשותפים, האבטחה והמתקנים. הסכום נמסר בשקיפות מלאה לפני החתימה.'},
+    {q:'האם אפשר להשכיר את הדירה?', a:'בהחלט. האזור מבוקש להשכרה קצרת וארוכת טווח, וניתן להיעזר בשירותי ניהול השכרה מקומיים.'},
+    {q:'מה קורה אם אני רוצה למכור את הדירה בהמשך?', a:'ניתן למכור את הנכס בכל שלב בהתאם לתנאי ההסכם; אנחנו מלווים גם בתהליכי מכירה חוזרת.'},
+    {q:'האם אפשר לראות את הפרויקט פיזית?', a:'כן, אנחנו מארגנים סיורי רוכשים בבאקו, כולל ביקור באתר הבנייה ובאזור Sea Breeze.'},
+  ],
+  [
+    {q:'מה זה אזור Sea Breeze?', a:'Sea Breeze הוא אזור החוף החדש והמבוקש ביותר בבאקו. פרויקט פיתוח ענק הכולל מלונות יוקרה, קזינו, אטרקציות ומגורים על קו החוף הראשון.'},
+    {q:'מה יש בקזינו של Sea Breeze?', a:'הקזינו הגדול באירופה נבנה במרחק 6 דקות הליכה מהפרויקט: 90,000 מ״ר, יותר מ-100 שולחנות משחק ו-1,500 מכונות משחק.'},
+    {q:'מתי צפוי האזור להיפתח במלואו?', a:'הפיתוח מתקדם בשלבים; חלקים מהתשתית והמתקנים כבר פועלים, וההשלמה המלאה של האזור צפויה בשנים הקרובות.'},
+    {q:'מה מבדל את Sea Breeze משאר אזורי באקו?', a:'מיקום ייחודי על החוף, השקעת ענק ממשלתית ופרטית, ותמהיל של תיירות, בילוי ומגורים באזור אחד.'},
+    {q:'מה יש באזור מעבר לקזינו?', a:'מלונות, מרינה, פארק מים, מסעדות, חופים מוסדרים, מגרשי ספורט ושטחי מסחר, הכל בתוך המתחם.'},
+    {q:'האם האזור פעיל כל השנה?', a:'כן. עונת הים מרוכזת בחודשים החמים, אך המלונות, הקזינו והמסחר פועלים לאורך כל השנה.'},
+    {q:'מי מפתח את Sea Breeze?', a:'האזור מפותח על ידי גוף יזמי גדול בליווי השקעות פרטיות וממשלתיות בהיקף של מיליארדי דולרים.'},
+    {q:'מה מרחק ההליכה מהפרויקט לחוף?', a:'הפרויקט בקו ראשון לים, דקות הליכה ספורות מהחוף, מהמרינה ומאזור המסחר.'},
+  ],
+  [
+    {q:'למה להשקיע בבאקו?', a:'באקו היא בירת אזרבייג׳ן ומרכז כלכלי צומח, עם השקעות תשתית בינלאומיות, תיירות גואה ושוק נדל״ן במגמת עלייה.'},
+    {q:'האם זרים יכולים לרכוש נדל״ן בבאקו?', a:'כן, החוק באזרבייג׳ן מאפשר לזרים לרכוש נכסי מגורים ללא מגבלות מיוחדות.'},
+    {q:'איך מגיעים לבאקו?', a:'לבאקו טיסות ישירות ממרבית ערי אירופה והמזרח התיכון, ושדה התעופה הבינלאומי נמצא כ-25 דקות מהעיר.'},
+    {q:'כמה זמן נסיעה מהפרויקט לשדה התעופה?', a:'כ-25 דקות נסיעה מ-Sea Breeze לשדה התעופה, וכ-20 דקות לעיר באקו.'},
+    {q:'האם יש טיסות ישירות מישראל?', a:'כן, מספר טיסות ישירות בשבוע, בטיסה של כשלוש שעות בלבד.'},
+    {q:'מה מצב המיסוי על נדל״ן באזרבייג׳ן?', a:'המיסוי על רכישה והחזקת נכסים נחשב נמוך יחסית לאירופה. אנחנו מחברים אתכם לייעוץ מקצועי בנושא.'},
+    {q:'באיזו מטבע מתבצעת העסקה?', a:'העסקאות מתבצעות בדולר אמריקאי או במנאט המקומי, בהתאם לתנאי ההסכם.'},
+    {q:'האם צריך להגיע לבאקו כדי לרכוש?', a:'לא חובה. ניתן להשלים את התהליך מרחוק בליווי משפטי ובייפוי כוח, אך אנחנו ממליצים על ביקור באתר.'},
+    {q:'איך מתנהלת התקשורת מול הרוכשים הישראלים?', a:'הליווי כולו בעברית, מהפגישה הראשונה ועד מסירת המפתח.'},
+  ],
+];
+const LABELS = ['מיאמי רזידנס', 'Sea Breeze', 'באקו'];
+
+class Component extends DCLogic {
+  state = { topic: 0, open: 0 , isMobile: false, menuOpen: false };
+  componentDidMount() {
+    this.checkMobileNav = () => {
+      const m = window.innerWidth < 900;
+      this.setState({ isMobile: m, narrow: m, menuOpen: m ? this.state.menuOpen : false });
+    };
+    this.checkMobileNav();
+    window.addEventListener('resize', this.checkMobileNav);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this.checkMobileNav); }
+  toggleMenu = () => this.setState(st => ({ menuOpen: !st.menuOpen }));
+  renderVals() {
+    const { topic, open } = this.state;
+    return {
+      isMobile: this.state.isMobile,
+      isDesktop: !this.state.isMobile,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: this.toggleMenu,
+      faqs: LISTS[topic].map((f, i) => ({
+        q: f.q, a: f.a,
+        open: open === i,
+        sign: open === i ? '\u2212' : '+',
+        signBg: open === i ? '#7C3F43' : 'rgba(140,74,78,0.12)',
+        signColor: open === i ? '#FFFFFF' : '#8C4A4E',
+        toggle: () => this.setState({ open: open === i ? null : i }),
+      })),
+      topics: LABELS.map((label, i) => ({
+        label,
+        select: () => this.setState({ topic: i, open: 0 }),
+        bg: topic === i ? '#7C3F43' : 'transparent',
+        color: topic === i ? '#FFFFFF' : '#3A3436',
+        border: topic === i ? 'transparent' : 'rgba(140,74,78,0.3)',
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>
